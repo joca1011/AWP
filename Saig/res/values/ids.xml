@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="register_password_repeat" type="id"/>
+    <item name="register_email" type="id" />
+    <item name="register_password" type="id" />
+</resources>

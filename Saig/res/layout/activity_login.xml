@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:columnCount="1"
+    android:orientation="vertical"
+    android:padding="25dp"
+     >
+
+    
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        android:paddingTop="100dp" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:paddingTop="25dp" />
+
+    <Button
+        android:id="@+id/button_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_column="0"
+        android:layout_gravity="center"
+        android:layout_row="5"
+        android:text="@string/register"
+        android:onClick="signUp" />
+
+    <Button
+        android:id="@+id/button_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_column="0"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_marginBottom="15dp"
+        android:layout_row="5"
+        android:onClick="signIn"
+        android:text="@string/login" />
+
+    <CheckBox
+        android:id="@+id/checkBox1"
+        android:layout_column="0"
+        android:layout_gravity="left|top"
+        android:layout_row="2"
+        android:paddingEnd="50dp"
+        android:text="@string/login_save"
+        android:layout_marginBottom="25dp"
+        android:layout_marginTop="5dp" />
+
+</GridLayout>
