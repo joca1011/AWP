@@ -13,9 +13,10 @@
     <string name="register_password">Password</string>
     <string name="register_password_repeat">Confirm Password</string>
     <string name="register_register">Register</string>
-    <string name="external_logins_instagram">Instagram</string>
+    <string name="external_logins_auphonic">Auphonic</string>
     <string name="external_logins_podio">Podio</string>
     <string name="external_logins_evernote">Evernote</string>
     <string name="save_logins">Save Information</string>
+    <string name="preference_file_key">de.saig.awp.PREFERENCE_FILE_KEY</string>
 
 </resources>

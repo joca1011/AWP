@@ -51,11 +51,11 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/external_logins_instagram"
+        android:text="@string/external_logins_auphonic"
         android:layout_marginTop="25dp" />
 
     <EditText
-        android:id="@+id/external_logins_instagram_email"
+        android:id="@+id/external_logins_auphonic_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -63,7 +63,7 @@
         android:hint="@string/email" />
 
     <EditText
-        android:id="@+id/external_logins_instagram_password"
+        android:id="@+id/external_logins_auphonic_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -74,6 +74,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/save_logins"
-        android:layout_marginTop="25dp" />
+        android:layout_marginTop="25dp"
+        android:onClick="onSave" />
 
 </LinearLayout>
