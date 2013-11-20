@@ -1,6 +1,7 @@
 package de.saig.activities;
 
 import de.awp.saig.R;
+import de.saig.podio.PodioService;
 import de.saig.util.Constants;
 import android.app.Activity;
 import android.content.Context;
@@ -38,6 +39,9 @@ public class ExternalLogins extends Activity{
 		editor.putString(Constants.AUPHONIC_PASSWORD, editText.getText().toString());
 		
 		editor.commit();
+		
+		PodioService ps = new PodioService();
+		ps.getWorkshopsNamesForSpinner(this);
 	}
 	
 }

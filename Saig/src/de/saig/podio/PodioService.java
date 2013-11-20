@@ -10,8 +10,12 @@ import com.podio.APIFactory;
 import com.podio.ResourceFactory;
 import com.podio.app.AppAPI;
 import com.podio.app.Application;
+import com.podio.filter.FilterByValue;
+import com.podio.item.FieldValuesView;
 import com.podio.item.Item;
 import com.podio.item.ItemAPI;
+import com.podio.item.ItemBadge;
+import com.podio.item.ItemsResponse;
 import com.podio.oauth.OAuthClientCredentials;
 import com.podio.oauth.OAuthUsernameCredentials;
 
@@ -31,13 +35,26 @@ public class PodioService {
 		return new APIFactory(resourceFactory);
 	}
 	
-	public List<String> getWorkshopsNamesForSpinner(Activity activity) {
+	public void getWorkshopsNamesForSpinner(Activity activity) {
 		APIFactory apiFactory = login(activity);
 		
 	 AppAPI aApi = apiFactory.getAPI(AppAPI.class);
 		Application app = aApi.getApp(Constants.WORKSHOP_APP_ID);
+		
 		ItemAPI iApi= apiFactory.getAPI(ItemAPI.class);
-		Item item = iApi.getItems(Constants.WORKSHOP_APP_ID);
+		ItemsResponse response = iApi.getItems(app.getId(), 100, 0, null, false);
+//        System.out.println(response.toString());
+//        
+//        List<ItemBadge> items = response.getItems();
+//        for (ItemBadge item : items)
+//        {
+//            List<FieldValuesView> fields = item.getFields();
+//            for (FieldValuesView field : fields)
+//            {
+//                System.out.println(field.getLabel().toString());
+//                System.out.println(field.getValues().toString());
+//            }
+//        }
 	}
 	
 }
