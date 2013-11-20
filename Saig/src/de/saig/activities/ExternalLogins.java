@@ -39,9 +39,6 @@ public class ExternalLogins extends Activity{
 		editor.putString(Constants.AUPHONIC_PASSWORD, editText.getText().toString());
 		
 		editor.commit();
-		
-		PodioService ps = new PodioService();
-		ps.getWorkshopsNamesForSpinner(this);
 	}
 	
 }
