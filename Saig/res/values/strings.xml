@@ -18,5 +18,9 @@
     <string name="external_logins_evernote">Evernote</string>
     <string name="save_logins">Save Information</string>
     <string name="preference_file_key">de.saig.awp.PREFERENCE_FILE_KEY</string>
+    <string name="take_picture">Take Picture</string>
+    <string name="record_voice">Record Voice</string>
+    <string name="show_media">Show Media</string>
+    <string name="settings">Settings</string>
 
 </resources>
