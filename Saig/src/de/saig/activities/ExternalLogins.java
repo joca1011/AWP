@@ -9,17 +9,24 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 public class ExternalLogins extends Activity{
+	
+	Button saveButton;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_external_logins);
+		
+		saveButton = (Button) findViewById(R.id.saved_button);
+		
 	}
 	
 	public void onSave (View view) {
+		
 		SharedPreferences sharedPrefs = getSharedPreferences(String.valueOf(R.string.preference_file_key), Context.MODE_PRIVATE);
 		SharedPreferences.Editor editor = sharedPrefs.edit();
 		
@@ -39,6 +46,10 @@ public class ExternalLogins extends Activity{
 		editor.putString(Constants.AUPHONIC_PASSWORD, editText.getText().toString());
 		
 		editor.commit();
+		    
+		Intent intent = new Intent(this, Overview.class);
+	    startActivity(intent);
+		
 	}
 	
 }

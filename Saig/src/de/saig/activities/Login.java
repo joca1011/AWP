@@ -21,9 +21,10 @@ public class Login extends Activity{
 	
 	public void signIn (View view) {
 		//TODO validate login
-		
 		Intent intent = new Intent(this, ExternalLogins.class);
 	    startActivity(intent);
+	    
+		
 	}
 	
 	public void signUp (View view) {
