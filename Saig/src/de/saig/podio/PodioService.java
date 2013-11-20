@@ -37,12 +37,13 @@ public class PodioService {
 	
 	public void getWorkshopsNamesForSpinner(Activity activity) {
 		APIFactory apiFactory = login(activity);
-		
-	 AppAPI aApi = apiFactory.getAPI(AppAPI.class);
-		Application app = aApi.getApp(Constants.WORKSHOP_APP_ID);
-		
-		ItemAPI iApi= apiFactory.getAPI(ItemAPI.class);
-		ItemsResponse response = iApi.getItems(app.getId(), 100, 0, null, false);
+//		
+//	 AppAPI aApi = apiFactory.getAPI(AppAPI.class);
+//		Application app = aApi.getApp(Constants.WORKSHOP_APP_ID);
+//		
+//		ItemAPI iApi= apiFactory.getAPI(ItemAPI.class);
+//		ItemsResponse response = iApi.getItems(app.getId(), 100, 0, null, false);
+//		return response.toString();
 //        System.out.println(response.toString());
 //        
 //        List<ItemBadge> items = response.getItems();
