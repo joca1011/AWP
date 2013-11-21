@@ -17,8 +17,6 @@
         android:layout_height="wrap_content"
         android:layout_row="3" />
 
-
-
     <Button
         android:id="@+id/overview_show_media"
         android:layout_width="140dp"
