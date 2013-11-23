@@ -2,7 +2,43 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
-    
+    android:orientation="horizontal" >
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="0.10"
+        android:columnCount="1" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_column="0"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_marginTop="100dp"
+            android:layout_row="0"
+            android:text="@string/logout_question"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="140dp"
+            android:layout_height="90dp"
+            android:layout_column="0"
+            android:layout_gravity="left|top"
+            android:layout_marginTop="150dp"
+            android:layout_row="0"
+            android:text="@string/logout_yes" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="140dp"
+            android:layout_height="91dp"
+            android:layout_column="0"
+            android:layout_gravity="right|top"
+            android:layout_marginTop="150dp"
+            android:layout_row="0"
+            android:text="@string/logout_no" />
+
+    </GridLayout>
 
 </LinearLayout>
