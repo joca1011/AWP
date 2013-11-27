@@ -1,5 +1,16 @@
 package de.saig.activities;
 
-public class NewAnnotation {
+import de.awp.saig.R;
+import android.app.Activity;
+import android.os.Bundle;
 
+public class NewAnnotation extends Activity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_new_annotation);
+		
+		
+	}
 }

@@ -1,5 +1,16 @@
 package de.saig.activities;
 
-public class AudioRecording {
+import de.awp.saig.R;
+import android.app.Activity;
+import android.os.Bundle;
 
+public class AudioRecording extends Activity{
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_audio_recording);
+		
+		
+	}
 }
