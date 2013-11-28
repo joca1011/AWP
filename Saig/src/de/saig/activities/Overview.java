@@ -25,4 +25,12 @@ public class Overview extends Activity {
 	  
 	    
 	}
+	
+	public void recordVoice (View view) {
+		//TODO validate login
+		Intent intent = new Intent(this, AudioRecording.class);
+	    startActivity(intent);
+	    
+		
+	}
 }

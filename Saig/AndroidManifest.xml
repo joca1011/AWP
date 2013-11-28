@@ -40,6 +40,10 @@
             android:name="de.saig.activities.MediaOverview"
             android:label="@string/app_name" >
         </activity>
+        <activity
+            android:name="de.saig.activities.AudioRecording"
+            android:label="@string/app_name" >
+        </activity>
         
 
     </application>
