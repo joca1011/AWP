@@ -36,6 +36,7 @@
          <item>Charlie</item>
          <item>Kevin</item>
      </string-array>
+    <string name="overview_evernote_api">Upload Picture/Note with Evernote </string>
     
     
 </resources>

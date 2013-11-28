@@ -33,4 +33,12 @@ public class Overview extends Activity {
 	    
 		
 	}
+	
+	public void onClickEvernoteButton (View view) {
+		//TODO validate login
+		Intent LaunchIntent = getPackageManager().getLaunchIntentForPackage("com.evernote.android.sample");
+		startActivity(LaunchIntent);
+	    
+		
+	}
 }
