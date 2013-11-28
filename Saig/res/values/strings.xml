@@ -30,13 +30,23 @@
     <string name="logout_yes">Yes</string>
     <string name="logout_no">No</string>
     <string name="overview_media_back">Back</string>
-     <string-array name="spinnerTestArray">
-         <item>Alpha</item>
-         <item>Bravo</item>
-         <item>Charlie</item>
-         <item>Kevin</item>
-     </string-array>
     <string name="overview_evernote_api">Upload Picture/Note with Evernote </string>
     
-    
+    <string-array name="spinnerWorkshop">
+         <item>Workshop 1</item>
+         <item>Workshop 2</item>
+         <item>Workshop 3</item>
+    </string-array>
+    <string-array name="spinnerGame">
+         <item>Me and my Shadow</item>
+         <item>Prune the Product tree</item>
+         <item>Speedboat</item>
+    </string-array>
+    <string-array name="spinnerRound">
+         <item>1</item>
+         <item>2</item>
+         <item>3</item>
+         <item>4</item>
+    </string-array>
+     
 </resources>

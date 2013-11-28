@@ -13,20 +13,38 @@ import de.awp.saig.R;
 
 public class MediaOverview extends Activity{
 
-	Spinner spinnerTest1;
+	Spinner spinnerWorkshop;
+	Spinner spinnerGame;
+	Spinner spinnerRound;
 	EditText editText1;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_media_overview);
-		spinnerTest1 = (Spinner) findViewById(R.id.spinnerTest1);
+		
 		editText1 = (EditText) findViewById(R.id.editText1);
+		
+		spinnerWorkshop = (Spinner) findViewById(R.id.spinnerWorkshop);
 		  ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
-				this, R.array.spinnerTestArray, android.R.layout.simple_spinner_item);
+				this, R.array.spinnerWorkshop, android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		spinnerTest1.setAdapter(adapter);
-		spinnerTest1.setOnItemSelectedListener(new MyOnItemSelectedListener());
+		spinnerWorkshop.setAdapter(adapter);
+		spinnerWorkshop.setOnItemSelectedListener(new MyOnItemSelectedListener());
+		
+		spinnerGame = (Spinner) findViewById(R.id.spinnerGame);
+		  ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(
+				this, R.array.spinnerGame, android.R.layout.simple_spinner_item);
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		spinnerGame.setAdapter(adapter2);
+		spinnerGame.setOnItemSelectedListener(new MyOnItemSelectedListener());
+		
+		spinnerRound = (Spinner) findViewById(R.id.spinnerRound);
+		  ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(
+				this, R.array.spinnerRound, android.R.layout.simple_spinner_item);
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		spinnerRound.setAdapter(adapter3);
+		spinnerRound.setOnItemSelectedListener(new MyOnItemSelectedListener());
 		
 	}		
 	
@@ -35,7 +53,7 @@ public class MediaOverview extends Activity{
 		@Override
 		public void onItemSelected(AdapterView<?> parent,
 			View view, int pos, long id) {
-			String str = parent.getItemAtPosition(pos).toString().toUpperCase();
+			String str = parent.getItemAtPosition(pos).toString();	//normalerweise noch .toUpper()
 			editText1.setText(str);
 		}
 		
