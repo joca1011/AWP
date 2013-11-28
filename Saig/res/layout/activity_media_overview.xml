@@ -16,4 +16,23 @@
         android:text="@string/overview_media_back" 
         android:onClick="onBackClick"/>
 
+    <Spinner
+        android:id="@+id/spinnerTest1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true" />
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/spinnerTest1"
+        android:layout_marginLeft="38dp"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
+
 </RelativeLayout>

@@ -30,5 +30,12 @@
     <string name="logout_yes">Yes</string>
     <string name="logout_no">No</string>
     <string name="overview_media_back">Back</string>
+     <string-array name="spinnerTestArray">
+         <item>Alpha</item>
+         <item>Bravo</item>
+         <item>Charlie</item>
+         <item>Kevin</item>
+     </string-array>
+    
     
 </resources>
