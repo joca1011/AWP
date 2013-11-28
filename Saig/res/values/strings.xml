@@ -29,5 +29,6 @@
     <string name="logout_question">Do you really want to sign out?</string>
     <string name="logout_yes">Yes</string>
     <string name="logout_no">No</string>
+    <string name="overview_media_back">Back</string>
     
 </resources>

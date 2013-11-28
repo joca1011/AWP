@@ -20,7 +20,7 @@
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/backButton"
             android:layout_width="140dp"
             android:layout_height="90dp"
             android:layout_column="0"
