@@ -17,22 +17,35 @@
         android:onClick="onBackClick"/>
 
     <Spinner
-        android:id="@+id/spinnerTest1"
+        android:id="@+id/spinnerWorkshop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true" />
 
+    <Spinner
+        android:id="@+id/spinnerGame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/spinnerWorkshop" />
+
     <EditText
         android:id="@+id/editText1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/spinnerTest1"
-        android:layout_marginLeft="38dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:ems="10" >
 
         <requestFocus />
     </EditText>
+
+    <Spinner
+        android:id="@+id/spinnerRound"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/spinnerGame" />
 
 </RelativeLayout>

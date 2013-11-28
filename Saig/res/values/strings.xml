@@ -32,6 +32,8 @@
     <string name="overview_media_back">Back</string>
     <string name="overview_evernote_api">Upload Picture/Note with Evernote </string>
     
+    
+    <!-- TODO: folgendes soll später durch Datenbankinhalte ersetzt werden -->
     <string-array name="spinnerWorkshop">
          <item>Workshop 1</item>
          <item>Workshop 2</item>
