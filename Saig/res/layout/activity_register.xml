@@ -54,6 +54,7 @@
         android:layout_height="wrap_content"
         android:text="@string/register_register"
         android:layout_marginTop="25dp"  
-        android:background="#D6D6D6" />
+        android:background="#D6D6D6" 
+        android:onClick="signInClick" />
     
 </LinearLayout>
