@@ -32,4 +32,13 @@ public class Login extends Activity{
 	    startActivity(intent);
 	}
 	
+
+	public void onClickEvernote (View view) {
+		//TODO validate login
+		Intent intent = new Intent(this, HelloEDAM.class);
+	    startActivity(intent);
+	    
+		
+	}
+	
 }

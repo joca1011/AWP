@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- 	Steffen
+		XML von Evernote
+		Bitte nicht selbständig ändern!!!
+-->
+<resources>
+    <string-array name="esdk__main_list">
+        <item>@string/esdk__image_picker</item>
+        <item>@string/esdk__simple_note</item>
+        <item>@string/esdk__search_notes</item>
+    </string-array>
+</resources>
