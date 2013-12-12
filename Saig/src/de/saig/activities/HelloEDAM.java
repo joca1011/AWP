@@ -138,19 +138,24 @@ public class HelloEDAM extends ParentActivity {
    */
   public void logout(View view) {
    
-	 /**
+
 	  try {
       mEvernoteSession.logOut(this);
     } catch (InvalidAuthenticationException e) {
       Log.e(LOGTAG, "Tried to call logout with not logged in", e);
     }
     updateAuthUi();
-    */
-	  	Intent intent = new Intent(this, Login.class);
-	  	startActivity(intent);
+
 										
 			
   }
+  
+  public void onClickBack(View view) {
+	   
+		  	Intent intent = new Intent(this, Login.class);
+		  	startActivity(intent);
+														
+	  }
 
   /**
    * Called when the control returns from an activity that we launched.

@@ -17,7 +17,7 @@
     <string name="esdk__loading">Loading...</string>
     <string name="esdk__pick_notebook">Pick a notebook</string>
     <string name="label_login">Login</string>
-    <string name="label_logout">Zurück</string>
+    <string name="label_logout">Logout</string>
     <string name="label_search">Search</string>
     <string name="esdk__image_picker">Image Picker</string>
     <string name="esdk__simple_note">Simple Note</string>
@@ -37,6 +37,7 @@
     <string name="error_creating_notestore">Error creating notestore</string>
     <string name="error_saving_note">Error saving note</string>
     <string name="error_listing_notes">Error listing note</string>
+    <string name="goBack">Back</string>
     
     <!-- 	Steffen
 		ENDE XML Strings von Evernote

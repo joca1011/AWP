@@ -34,11 +34,20 @@
             android:layout_weight="1" />
 
         <Button
-            android:id="@+id/logout"
-            android:layout_height="wrap_content"
+            android:id="@+id/back"
             android:layout_width="0dp"
-            android:text="@string/label_logout"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onClickBack"
+            android:text="@string/goBack" />
+
+        <Button
+            android:id="@+id/logout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:onClick="logout"
-            android:layout_weight="1" />
+            android:text="@string/label_logout" />
+
     </LinearLayout>
 </LinearLayout>
