@@ -1,14 +1,10 @@
 package de.saig.activities;
 
-import de.awp.saig.R;
-import de.saig.podio.PodioService;
 import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
+import de.awp.saig.R;
 
 public class Login extends Activity{
 	
@@ -37,8 +33,6 @@ public class Login extends Activity{
 		//TODO validate login
 		Intent intent = new Intent(this, HelloEDAM.class);
 	    startActivity(intent);
-	    
-		
 	}
 	
 }

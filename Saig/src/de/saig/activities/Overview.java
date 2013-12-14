@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import de.awp.saig.R;
 
@@ -14,13 +15,15 @@ import de.awp.saig.R;
 public class Overview extends Activity {
 
 	Spinner spinnerSettings;
-	
+	EditText editText2;
 	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_overview);
+		
+		editText2 = (EditText) findViewById(R.id.editText2);
 		
 		spinnerSettings = (Spinner) findViewById(R.id.spinnerSettings);
 		  ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
@@ -29,16 +32,40 @@ public class Overview extends Activity {
 		spinnerSettings.setAdapter(adapter);
 		spinnerSettings.setOnItemSelectedListener(new MyOnItemSelectedListener());
 
+
 	}
 	
 	
-	public class MyOnItemSelectedListener implements OnItemSelectedListener {
+	public class MyOnItemSelectedListener  implements OnItemSelectedListener  {
 		
 		@Override
 		public void onItemSelected(AdapterView<?> parent,
 			View view, int pos, long id) {
 			String str = parent.getItemAtPosition(pos).toString();	//normalerweise noch .toUpper()
-			System.out.println(str);
+			
+			
+			if(pos==0){
+				editText2.setText(str);
+			}
+			else if(pos==1){
+				editText2.setText(str);
+				showLogout (parent);
+				
+			}
+			
+			else if(pos==2){
+				editText2.setText(str);	
+				showExternalLogins (parent);
+			}
+			
+			else if(pos==3){
+				editText2.setText(str);		
+				showSettingsGame (parent);
+			}
+			
+			else{
+				editText2.setText(str);
+			}
 		}
 		
 		@Override
@@ -54,16 +81,35 @@ public class Overview extends Activity {
 		//TODO validate login
 		Intent intent = new Intent(this, MediaOverview.class);
 	    startActivity(intent);
-	  
-	    
 	}
+	
+	
 	
 	public void recordVoice (View view) {
 		//TODO validate login
 		Intent intent = new Intent(this, AudioRecording.class);
 	    startActivity(intent);
-	    
-		
 	}
+	
+	
+	public void showLogout (View view) {
+		//TODO validate login
+		Intent intent = new Intent(this, Logout.class);
+	    startActivity(intent);
+	}
+	
+	
+	public void showExternalLogins (View view) {
+		//TODO validate login
+		Intent intent = new Intent(this, ExternalLogins.class);
+	    startActivity(intent);
+	}
+	
+	public void showSettingsGame (View view) {
+		//TODO validate login
+		Intent intent = new Intent(this, SettingsGame.class);
+	    startActivity(intent);
+	}
+	
 	
 }

@@ -38,6 +38,7 @@
     <string name="error_saving_note">Error saving note</string>
     <string name="error_listing_notes">Error listing note</string>
     <string name="goBack">Back</string>
+    <string name="save">Save</string>
     
     <!-- 	Steffen
 		ENDE XML Strings von Evernote
@@ -77,6 +78,7 @@
     
     
     <string-array name="spinnerSettings">
+         <item>Settings</item>    
          <item>Logout</item>
          <item>Login Verknüpfen</item>
          <item>Spiel einstellen</item>

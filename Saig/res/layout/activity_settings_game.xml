@@ -5,15 +5,21 @@
     android:orientation="vertical"  
     android:background="@drawable/bg1" >
     
-    <Spinner android:id="@+id/settings_game_spinner_workshop" />
-    <Spinner android:id="@+id/settings_game_spinner_game" />
-    <Spinner android:id="@+id/settings_game_spinner_round" />
+
 
     <Button
         android:id="@+id/settings_game_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"  
-        android:background="#D6D6D6" />
+        android:background="#D6D6D6"
+        android:text="@string/save" />
+
+    <Button
+        android:id="@+id/backToOverview"
+        android:layout_width="140dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="150dp"
+        android:onClick="backToOverview"
+        android:text="@string/logout_no" />
     
 </LinearLayout>
