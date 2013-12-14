@@ -76,6 +76,15 @@
     <string name="overview_evernote_api">Upload Picture/Note with Evernote </string>
     
     
+    <string-array name="spinnerSettings">
+         <item>Logout</item>
+         <item>Login Verknüpfen</item>
+         <item>Spiel einstellen</item>
+    </string-array>    
+    
+    
+    
+    
     <!-- TODO: folgendes soll später durch Datenbankinhalte ersetzt werden -->
     <string-array name="spinnerWorkshop">
          <item>Workshop 1</item>
@@ -94,4 +103,8 @@
          <item>4</item>
     </string-array>
      
+    
+    
+    
+    
 </resources>
