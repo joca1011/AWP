@@ -31,6 +31,11 @@ public class PodioService {
 		
 	}
 	
+	public DataObject getObjectByWorkshopId(Activity activity, int id) {
+		return null;
+		
+	}
+	
 	//Adds geben das Objekt mit der generierten Id zurück
 	public DataObject addDataObject(Activity activity, DataObject dataObject) {
 		return dataObject;
