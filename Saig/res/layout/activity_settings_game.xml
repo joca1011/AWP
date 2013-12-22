@@ -4,8 +4,26 @@
     android:layout_height="match_parent"
     android:orientation="vertical"  
     android:background="@drawable/bg1" >
-    
 
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="GAME SETTINGS"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+    </GridLayout>
+
+    <Button
+        android:id="@+id/backToOverview"
+        android:layout_width="140dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="150dp"
+        android:onClick="backToOverview"
+        android:text="@string/logout_no" />
 
     <Button
         android:id="@+id/settings_game_save"
@@ -15,11 +33,24 @@
         android:text="@string/save" />
 
     <Button
-        android:id="@+id/backToOverview"
-        android:layout_width="140dp"
-        android:layout_height="90dp"
-        android:layout_marginTop="150dp"
-        android:onClick="backToOverview"
-        android:text="@string/logout_no" />
+        android:id="@+id/settings_new_workshop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="newWorkshop"
+        android:text="NEW WORKSHOP" />
+
+    <Button
+        android:id="@+id/settings_new_game"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="newGame"
+        android:text="NEW GAME" />
+
+    <Button
+        android:id="@+id/settings_new_round"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="newRound"
+        android:text="NEW ROUND" />
     
-</LinearLayout>
+    </LinearLayout>

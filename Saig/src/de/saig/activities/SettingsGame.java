@@ -13,6 +13,30 @@ public class SettingsGame extends Activity{
 		setContentView(R.layout.activity_settings_game);
 	}
 	
+	
+	//Neuen Workshop erstellen
+	public void newWorkshop (View view) {
+		Intent intent = new Intent(this, NewWorkshop.class);
+	    startActivity(intent);
+	}
+	
+	//Neues Spiel erstellen
+	public void newGame (View view) {
+		Intent intent = new Intent(this, NewGame.class);
+	    startActivity(intent);
+	}	
+	
+	//Neue Runde erstellen
+	public void newRound (View view) {
+		Intent intent = new Intent(this, NewRound.class);
+	    startActivity(intent);
+	}
+	
+
+	
+	
+	
+	
 	public void backToOverview (View view) {
 		//TODO validate login
 		Intent intent = new Intent(this, Overview.class);

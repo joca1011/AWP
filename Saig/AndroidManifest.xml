@@ -44,7 +44,18 @@
             android:name="de.saig.activities.AudioRecording"
             android:label="@string/app_name" >
         </activity>
-        
+        <activity
+            android:name="de.saig.activities.NewWorkshop"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="de.saig.activities.NewRound"
+            android:label="@string/app_name" >
+        </activity>
+         <activity
+            android:name="de.saig.activities.NewGame"
+            android:label="@string/app_name" >
+        </activity>        
         
         
         
