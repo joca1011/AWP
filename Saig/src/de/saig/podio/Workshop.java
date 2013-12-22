@@ -2,6 +2,7 @@ package de.saig.podio;
 
 import java.util.Date;
 
+
 public class Workshop {
 	
 	private Integer id;
@@ -60,4 +61,8 @@ public class Workshop {
 		this.anzahlRunden = anzahlRunden;
 	}
 	
+	@Override
+	public String toString() {
+		return this.getTitel() + " (" + this.getDatum().getDate() + "." + this.getDatum().getMonth() + "." + (this.getDatum().getYear()+1900) + ")";
+	}
 }
