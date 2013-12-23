@@ -1,6 +1,11 @@
 package de.saig.activities;
 
+import java.io.IOException;
+import java.text.ParseException;
 import java.util.List;
+
+import org.apache.http.client.ClientProtocolException;
+import org.json.JSONException;
 
 import de.awp.saig.R;
 import de.saig.activities.MediaOverview.MyOnItemSelectedListener;
@@ -22,11 +27,25 @@ public class SettingsGame extends Activity{
 		PodioService ps = new PodioService();
 		
 		List<Workshop> a = null;
-		//a = ps.getWorkshops(this);
+		try {
+			a = ps.getWorkshops(this);
+		} catch (ClientProtocolException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
-		//Spinner spinnerWorkshop = (Spinner) findViewById(R.id.settings_workshop_spinner);
-		//ArrayAdapter  <Workshop> dataAdapter = new ArrayAdapter  <Workshop> (this, android.R.layout.simple_spinner_item,a );
-		//spinnerWorkshop.setAdapter(dataAdapter);
+		Spinner spinnerWorkshop = (Spinner) findViewById(R.id.settings_workshop_spinner);
+		ArrayAdapter  <Workshop> dataAdapter = new ArrayAdapter  <Workshop> (this, android.R.layout.simple_spinner_item,a );
+		spinnerWorkshop.setAdapter(dataAdapter);
 		
 	
 	}
