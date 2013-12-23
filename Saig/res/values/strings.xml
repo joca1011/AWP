@@ -73,9 +73,24 @@
     <string name="logout_question">Do you really want to sign out?</string>
     <string name="logout_yes">Yes</string>
     <string name="logout_no">No</string>
-    <string name="overview_media_back">Back</string>
+    <string name="back">Back</string>
+    <string name="save">Save</string>    
+    <string name="name">Name</string> 
     <string name="overview_evernote_api">Upload Picture/Note with Evernote </string>
     
+    
+
+    
+    <string name="new_workshop_headline">new Workshop</string>
+    <string name="new_workshop_start_date">Start Date</string>
+    <string name="new_workshop_end_date">End Date</string>
+  
+    
+    <string name="new_round_headline">new Round</string>
+    <string name="new_round_example_number">Number like 1,2,3 etc</string>
+
+    
+    <string name="new_game_headline">new Game</string>    
     
     <string-array name="spinnerSettings">
          <item>Settings</item>    
