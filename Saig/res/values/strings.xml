@@ -79,7 +79,11 @@
     <string name="overview_evernote_api">Upload Picture/Note with Evernote </string>
     
     
-
+	<string name="game_settings_headline">Game Settings</string>
+    <string name="game_settings_new_workshop">new Workshop</string>
+    <string name="game_settings_new_game">new Game</string>
+    <string name="game_settings_new_round">new Round</string>
+    
     
     <string name="new_workshop_headline">new Workshop</string>
     <string name="new_workshop_start_date">Start Date</string>
