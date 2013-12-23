@@ -48,7 +48,13 @@ public class SettingsGame extends Activity{
 	
 	
 	public void backToOverview (View view) {
-		//TODO validate login
+		Intent intent = new Intent(this, Overview.class);
+	    startActivity(intent);
+	}
+	
+	
+	public void saveSettingsGame (View view) {
+		//TODO Funktionalität, dass hier dann auch gespeichert wird fehlt noch
 		Intent intent = new Intent(this, Overview.class);
 	    startActivity(intent);
 	}
