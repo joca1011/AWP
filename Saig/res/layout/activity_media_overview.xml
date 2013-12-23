@@ -30,6 +30,14 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/spinnerWorkshop" />
 
+    <Spinner
+        android:id="@+id/spinnerRound"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/spinnerGame" />
+    
+    
     <EditText
         android:id="@+id/editText1"
         android:layout_width="wrap_content"
@@ -40,12 +48,5 @@
 
         <requestFocus />
     </EditText>
-
-    <Spinner
-        android:id="@+id/spinnerRound"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/spinnerGame" />
 
 </RelativeLayout>

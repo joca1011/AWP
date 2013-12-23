@@ -1,6 +1,9 @@
 package de.saig.activities;
 
+import java.util.List;
+
 import de.awp.saig.R;
+import de.saig.activities.MediaOverview.MyOnItemSelectedListener;
 import de.saig.podio.PodioService;
 import de.saig.podio.Workshop;
 import android.app.Activity;
@@ -16,11 +19,16 @@ public class SettingsGame extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_settings_game);
 		
-//		PodioService ps = new PodioService();
-//		
-//		Spinner spinner = findViewById(R.id.settings_workshop_spinner);
-//		ArrayAdapter  <Workshop> dataAdapter = new ArrayAdapter  <Workshop> (this, android.R.layout.simple_spinner_item, ps.getWorkshops(this));
-//		spinner.setAdapter(dataAdapter);
+		PodioService ps = new PodioService();
+		
+		List<Workshop> a = null;
+		//a = ps.getWorkshops(this);
+		
+		//Spinner spinnerWorkshop = (Spinner) findViewById(R.id.settings_workshop_spinner);
+		//ArrayAdapter  <Workshop> dataAdapter = new ArrayAdapter  <Workshop> (this, android.R.layout.simple_spinner_item,a );
+		//spinnerWorkshop.setAdapter(dataAdapter);
+		
+	
 	}
 	
 	
