@@ -3,6 +3,7 @@ package de.saig.activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -22,6 +23,13 @@ public class Overview extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_overview);
+		
+		
+		// Dieser Teil muss in jede Activity die einen Netzwerkzugriff hat, oder von der aus eine solche Activity aufgerufen wird
+		StrictMode.ThreadPolicy policy = new 
+		StrictMode.ThreadPolicy.Builder().permitAll().build(); 
+		StrictMode.setThreadPolicy(policy);
+		
 		
 		editText2 = (EditText) findViewById(R.id.editText2);
 		
@@ -78,7 +86,6 @@ public class Overview extends Activity {
 	
 	
 	public void showMedia (View view) {
-		//TODO validate login
 		Intent intent = new Intent(this, MediaOverview.class);
 	    startActivity(intent);
 	}
@@ -86,27 +93,23 @@ public class Overview extends Activity {
 	
 	
 	public void recordVoice (View view) {
-		//TODO validate login
 		Intent intent = new Intent(this, AudioRecording.class);
 	    startActivity(intent);
 	}
 	
 	
 	public void showLogout (View view) {
-		//TODO validate login
 		Intent intent = new Intent(this, Logout.class);
 	    startActivity(intent);
 	}
 	
 	
 	public void showExternalLogins (View view) {
-		//TODO validate login
 		Intent intent = new Intent(this, ExternalLogins.class);
 	    startActivity(intent);
 	}
 	
 	public void showSettingsGame (View view) {
-		//TODO validate login
 		Intent intent = new Intent(this, SettingsGame.class);
 	    startActivity(intent);
 	}

@@ -7,22 +7,29 @@ import java.util.List;
 import org.apache.http.client.ClientProtocolException;
 import org.json.JSONException;
 
-import de.awp.saig.R;
-import de.saig.activities.MediaOverview.MyOnItemSelectedListener;
-import de.saig.podio.PodioService;
-import de.saig.podio.Workshop;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import de.awp.saig.R;
+import de.saig.podio.PodioService;
+import de.saig.podio.Workshop;
 
 public class SettingsGame extends Activity{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_settings_game);
+		
+		
+		// Dieser Teil muss in jede Activity die einen Netzwerkzugriff hat
+		StrictMode.ThreadPolicy policy = new 
+		StrictMode.ThreadPolicy.Builder().permitAll().build(); 
+		StrictMode.setThreadPolicy(policy);
+		
 		
 		PodioService ps = new PodioService();
 		
