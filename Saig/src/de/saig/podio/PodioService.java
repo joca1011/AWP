@@ -102,9 +102,59 @@ public class PodioService {
 		    return workshops;
 	}
 	
-	public Workshop getWorkshopById(Activity activity, int id) {
-		return null;
+	public Workshop getWorkshopById(Activity activity, int idWorkshop) throws ClientProtocolException, IOException, JSONException, ParseException  {
 		
+		String url = "/podio/workshops";
+		InputStream content = null;
+		HttpClient httpclient = new DefaultHttpClient();
+		
+		
+		  SharedPreferences sharedPrefs = activity.getSharedPreferences(String.valueOf(R.string.preference_file_key), Context.MODE_PRIVATE);
+	      
+	      HttpGet httpGet = new HttpGet(url+"/"+idWorkshop+"/"+sharedPrefs.getString(Constants.PODIO_EMAIL, null)+"/"+sharedPrefs.getString(Constants.PODIO_PASSWORD, null));
+	      
+	      
+	      
+	      HttpResponse response = httpclient.execute(new HttpHost(PodioConfig.host), httpGet);
+		    
+		    content = response.getEntity().getContent();
+		    BufferedReader reader = new BufferedReader(new InputStreamReader(content));
+		    StringBuilder out = new StringBuilder();
+		    String line;
+		    while ((line = reader.readLine()) != null) {
+		        out.append(line);
+		    }
+		    JSONObject json = new JSONObject(out.toString());
+		    
+				Integer id = json.getInt("id");
+				String titel = json.getString("titel");
+				Date datum = new SimpleDateFormat("yyyy-MM-dd").parse(json.getString("datum"));
+				Category innovationGames = null;
+				int runden = json.getInt("anzahl-runden");
+				
+				switch (json.getInt("innovation-games")) {
+				case 1:{
+					innovationGames = Category.ME_AND_MY_SHADOW;
+					break;
+				}
+				case 2:{
+					innovationGames = Category.PRODUCT_BOX;
+					break;
+				}
+				case 3:{
+					innovationGames = Category.SPEED_BOAT;
+					break;
+				}
+				case 4:{
+					innovationGames = Category.PRUNE_THE_PRODUCT_TREE;
+					break;
+				}
+
+				default:
+					break;
+				}
+				
+		return new Workshop(id, titel, datum, innovationGames, runden);				
 	}
 	
 	public List<DataAnnotation> getAnnotationsByItemId(Activity activity) {

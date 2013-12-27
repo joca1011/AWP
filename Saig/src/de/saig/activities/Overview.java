@@ -1,5 +1,12 @@
 package de.saig.activities;
 
+import java.io.IOException;
+import java.text.ParseException;
+import java.util.List;
+
+import org.apache.http.client.ClientProtocolException;
+import org.json.JSONException;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +18,8 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import de.awp.saig.R;
+import de.saig.podio.PodioService;
+import de.saig.podio.Workshop;
 
 
 public class Overview extends Activity {
@@ -41,6 +50,31 @@ public class Overview extends Activity {
 		spinnerSettings.setOnItemSelectedListener(new MyOnItemSelectedListener());
 
 
+		
+		/* Podio Test Bereich*/
+		PodioService ps = new PodioService();
+		
+		String a = "nö";
+		try {
+			Workshop ws = ps.getWorkshopById(this,96788031);
+			a = ws.getTitel()+" "+ws.getDatum();
+		} catch (ClientProtocolException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		editText2.setText(a);
+		
+		/*Ende Podio Test Bereich */
 	}
 	
 	
@@ -53,7 +87,11 @@ public class Overview extends Activity {
 			
 			
 			if(pos==0){
-				editText2.setText(str);
+				
+				
+				
+				
+				//editText2.setText(a);
 			}
 			else if(pos==1){
 				editText2.setText(str);
