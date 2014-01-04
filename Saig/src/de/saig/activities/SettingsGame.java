@@ -12,13 +12,22 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.AdapterView.OnItemSelectedListener;
 import de.awp.saig.R;
+import de.saig.activities.MediaOverview.MyOnItemSelectedListener;
 import de.saig.podio.PodioService;
 import de.saig.podio.Workshop;
 
 public class SettingsGame extends Activity{
+	
+	Spinner spinnerWorkshop;
+	Spinner spinnerGame;
+	Spinner spinnerRound;
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -31,6 +40,8 @@ public class SettingsGame extends Activity{
 		StrictMode.setThreadPolicy(policy);
 		
 		
+		
+		//Spinner Workshop
 		PodioService ps = new PodioService();
 		
 		List<Workshop> a = null;
@@ -50,12 +61,42 @@ public class SettingsGame extends Activity{
 			e.printStackTrace();
 		}
 		
-		Spinner spinnerWorkshop = (Spinner) findViewById(R.id.settings_workshop_spinner);
+		spinnerWorkshop = (Spinner) findViewById(R.id.settings_workshop_spinner);
 		ArrayAdapter  <Workshop> dataAdapter = new ArrayAdapter  <Workshop> (this, android.R.layout.simple_spinner_item,a );
 		spinnerWorkshop.setAdapter(dataAdapter);
 		
 	
+		//Spinner Game		
+		spinnerGame = (Spinner) findViewById(R.id.spinnerGame);
+		  ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+				this, R.array.spinnerGame, android.R.layout.simple_spinner_item);
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		spinnerGame.setAdapter(adapter);
+		spinnerGame.setOnItemSelectedListener(new MyOnItemSelectedListener());
+		
+		
 	}
+	
+	
+	public class MyOnItemSelectedListener implements OnItemSelectedListener {
+		
+		@Override
+		public void onItemSelected(AdapterView<?> parent,
+			View view, int pos, long id) {
+			String str = parent.getItemAtPosition(pos).toString();	//normalerweise noch .toUpper()
+			//TODO: statt "editText1.setText(str);" muss man hier das aktuelle Spiel auf das ausgewählte spiel setzen
+		}
+		
+		@Override
+		public void onNothingSelected(AdapterView parent){
+			//Tue nichts
+		}
+	}
+	
+	
+	
+	
+	
 	
 	
 	//Neuen Workshop erstellen
