@@ -1,14 +1,20 @@
 package de.saig.activities;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.ParseException;
 import java.util.List;
 
 import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONException;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
@@ -20,12 +26,14 @@ import android.widget.Spinner;
 import de.awp.saig.R;
 import de.saig.podio.PodioService;
 import de.saig.podio.Workshop;
+import de.saig.util.Constants;
 
 
 public class Overview extends Activity {
 
 	Spinner spinnerSettings;
 	EditText editText2;
+	SharedPreferences sharedPrefs;
 	
 	
 	@Override
@@ -75,6 +83,36 @@ public class Overview extends Activity {
 		editText2.setText(a);
 		
 		/*Ende Podio Test Bereich */
+		
+		
+		/* Shared Preferences Test*/
+		
+		// TODO: Hier WorkshopID, GameID und Rundennummer in setText ausgeben
+		// TODO: Wie geplant oben immer anzeigen welcher Workshop, Game, Round, siehe Todo oben
+		// TODO: Danach in Gamesettings einstellen, dass die shared preferances angepasst werden
+		
+		
+		String url = "/podio/workshops";
+		InputStream content = null;
+		HttpClient httpclient = new DefaultHttpClient();
+		 
+		
+		 sharedPrefs = getSharedPreferences(String.valueOf(R.string.preference_file_key), Context.MODE_PRIVATE);
+	      
+	     //String test1 = sharedPrefs.getString(Constants.WORKSHOP_ID, null)+"/"+sharedPrefs.getString(Constants.PODIO_PASSWORD, null);
+	      
+	    // String test1 = sharedPrefs.getString(getString(Constants.WORKSHOP_ID), null);
+	    //		 		sharedPrefs.getString(getString(Constants.GAME_ID), null)+" und "+
+	    	//	 		sharedPrefs.getString(getString(Constants.ROUND_NR), null);
+		 
+		int WorkshopId = sharedPrefs.getInt("WorkshopId",Constants.WORKSHOP_ID);
+		int test234 = 6;
+		String WorkshopIdString =  Integer.toString(WorkshopId);
+	     editText2.setText(WorkshopIdString);
+		
+		
+		/*Shared Preferences Test*/
+		
 	}
 	
 	

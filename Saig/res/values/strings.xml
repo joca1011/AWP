@@ -125,7 +125,7 @@
     </string-array>
      
     
-    
-    
+    <!-- Löschen  -->
+    <string name="platzHalterOverview">Workshopname Spiel, Runde</string> 
     
 </resources>
