@@ -7,8 +7,11 @@ import java.util.List;
 import org.apache.http.client.ClientProtocolException;
 import org.json.JSONException;
 
+import android.R.integer;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
@@ -20,13 +23,14 @@ import de.awp.saig.R;
 import de.saig.activities.MediaOverview.MyOnItemSelectedListener;
 import de.saig.podio.PodioService;
 import de.saig.podio.Workshop;
+import de.saig.util.Constants;
 
 public class SettingsGame extends Activity{
 	
 	Spinner spinnerWorkshop;
 	Spinner spinnerGame;
 	Spinner spinnerRound;
-	
+	SharedPreferences sharedPrefs;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +43,9 @@ public class SettingsGame extends Activity{
 		StrictMode.ThreadPolicy.Builder().permitAll().build(); 
 		StrictMode.setThreadPolicy(policy);
 		
+		
+		//getSharedPreferences
+		sharedPrefs = getSharedPreferences(String.valueOf(R.string.preference_file_key), Context.MODE_PRIVATE);
 		
 		
 		//Spinner Workshop
@@ -64,7 +71,6 @@ public class SettingsGame extends Activity{
 		spinnerWorkshop = (Spinner) findViewById(R.id.settings_workshop_spinner);
 		ArrayAdapter  <Workshop> dataAdapter = new ArrayAdapter  <Workshop> (this, android.R.layout.simple_spinner_item,a );
 		spinnerWorkshop.setAdapter(dataAdapter);
-		
 	
 		//Spinner Game		
 		spinnerGame = (Spinner) findViewById(R.id.spinnerGame);
@@ -73,9 +79,15 @@ public class SettingsGame extends Activity{
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinnerGame.setAdapter(adapter);
 		spinnerGame.setOnItemSelectedListener(new MyOnItemSelectedListener());
-		
-		
 	}
+	
+	
+
+
+	
+	
+	
+	
 	
 	
 	public class MyOnItemSelectedListener implements OnItemSelectedListener {
@@ -92,6 +104,7 @@ public class SettingsGame extends Activity{
 			//Tue nichts
 		}
 	}
+	
 	
 	
 	

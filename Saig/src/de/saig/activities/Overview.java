@@ -23,6 +23,7 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import de.awp.saig.R;
 import de.saig.podio.PodioService;
 import de.saig.podio.Workshop;
@@ -32,7 +33,8 @@ import de.saig.util.Constants;
 public class Overview extends Activity {
 
 	Spinner spinnerSettings;
-	EditText editText2;
+	TextView textviewHeadline;
+	TextView textviewPodioTest;
 	SharedPreferences sharedPrefs;
 	
 	
@@ -48,7 +50,9 @@ public class Overview extends Activity {
 		StrictMode.setThreadPolicy(policy);
 		
 		
-		editText2 = (EditText) findViewById(R.id.editText2);
+		textviewHeadline = (TextView) findViewById(R.id.textview_headline);
+		textviewPodioTest = (TextView) findViewById(R.id.textview_podio_test);
+		
 		
 		spinnerSettings = (Spinner) findViewById(R.id.spinnerSettings);
 		  ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
@@ -59,7 +63,7 @@ public class Overview extends Activity {
 
 
 		
-		/* Podio Test Bereich*/
+		/* Podio Test Bereich */
 		PodioService ps = new PodioService();
 		
 		String a = "nö";
@@ -80,9 +84,12 @@ public class Overview extends Activity {
 			e.printStackTrace();
 		}
 		
-		editText2.setText(a);
+		textviewPodioTest.setText(a);
 		
-		/*Ende Podio Test Bereich */
+		/* Ende Podio Test Bereich */
+		
+		
+		
 		
 		
 		/* Shared Preferences Test*/
@@ -105,10 +112,14 @@ public class Overview extends Activity {
 	    //		 		sharedPrefs.getString(getString(Constants.GAME_ID), null)+" und "+
 	    	//	 		sharedPrefs.getString(getString(Constants.ROUND_NR), null);
 		 
-		int WorkshopId = sharedPrefs.getInt("WorkshopId",Constants.WORKSHOP_ID);
-		int test234 = 6;
-		String WorkshopIdString =  Integer.toString(WorkshopId);
-	     editText2.setText(WorkshopIdString);
+		int WorkshopId = sharedPrefs.getInt("WORKSHOP_ID",Constants.WORKSHOP_ID);
+		int GameId = sharedPrefs.getInt("GameId",Constants.GAME_ID);
+		int RoundNr = sharedPrefs.getInt("RoundNr",Constants.ROUND_NR);
+
+		String WorkshopDataString =  	 "  WorkshopId: "+Integer.toString(WorkshopId)
+										+"  Game Id: "+Integer.toString(GameId)
+										+"  Round Nr: "+Integer.toString(RoundNr);
+	     textviewHeadline.setText(WorkshopDataString);
 		
 		
 		/*Shared Preferences Test*/
@@ -129,26 +140,26 @@ public class Overview extends Activity {
 				
 				
 				
-				//editText2.setText(a);
+				//textviewHeadline.setText(a);
 			}
 			else if(pos==1){
-				editText2.setText(str);
+				textviewHeadline.setText(str);
 				showLogout (parent);
 				
 			}
 			
 			else if(pos==2){
-				editText2.setText(str);	
+				textviewHeadline.setText(str);	
 				showExternalLogins (parent);
 			}
 			
 			else if(pos==3){
-				editText2.setText(str);		
+				textviewHeadline.setText(str);		
 				showSettingsGame (parent);
 			}
 			
 			else{
-				editText2.setText(str);
+				textviewHeadline.setText(str);
 			}
 		}
 		
