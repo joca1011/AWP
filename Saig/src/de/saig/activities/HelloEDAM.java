@@ -152,7 +152,7 @@ public class HelloEDAM extends ParentActivity {
   
   public void onClickBack(View view) {
 	   
-		  	Intent intent = new Intent(this, Login.class);
+		  	Intent intent = new Intent(this, ExternalLogins.class);
 		  	startActivity(intent);
 														
 	  }
