@@ -129,24 +129,24 @@ public class PodioService {
 				Integer id = json.getInt("id");
 				String titel = json.getString("titel");
 				Date datum = new SimpleDateFormat("yyyy-MM-dd").parse(json.getString("datum"));
-				Category innovationGames = null;
+				List<Category> innovationGames = new ArrayList<Category>();
 				int runden = json.getInt("anzahl-runden");
 				
 				switch (json.getInt("innovation-games")) {
 				case 1:{
-					innovationGames = Category.ME_AND_MY_SHADOW;
+					innovationGames.add(Category.ME_AND_MY_SHADOW);
 					break;
 				}
 				case 2:{
-					innovationGames = Category.PRODUCT_BOX;
+					innovationGames.add(Category.PRODUCT_BOX);
 					break;
 				}
 				case 3:{
-					innovationGames = Category.SPEED_BOAT;
+					innovationGames.add(Category.SPEED_BOAT);
 					break;
 				}
 				case 4:{
-					innovationGames = Category.PRUNE_THE_PRODUCT_TREE;
+					innovationGames.add(Category.PRUNE_THE_PRODUCT_TREE);
 					break;
 				}
 
