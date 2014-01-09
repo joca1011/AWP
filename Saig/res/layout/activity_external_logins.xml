@@ -33,21 +33,13 @@
         android:text="@string/external_logins_evernote"
         android:layout_marginTop="25dp" />
 
-    <EditText
-        android:id="@+id/external_logins_evernote_email"
+    <Button
+        android:id="@+id/evernoteButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textEmailAddress"
-        android:hint="@string/email" />
-
-    <EditText
-        android:id="@+id/external_logins_evernote_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:hint="@string/password" />
+        android:text="@string/label_login"
+        android:onClick="onClickEvernote"  
+        android:background="#D6D6D6" />
 
     <TextView
         android:layout_width="wrap_content"

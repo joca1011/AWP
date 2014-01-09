@@ -18,4 +18,10 @@ public class Logout extends Activity{
 		Intent intent = new Intent(this, Overview.class);
 	    startActivity(intent);
 	}
+	
+	public void logout (View view) {
+		//TODO validate login
+		Intent intent = new Intent(this, Login.class);
+	    startActivity(intent);
+	}
 }

@@ -35,10 +35,15 @@ public class ExternalLogins extends Activity{
 		editText = (EditText) findViewById(R.id.external_logins_podio_password);
 		editor.putString(Constants.PODIO_PASSWORD, editText.getText().toString());
 		
+		/*
+		 * Brauchen wir nicht mehr. Evernote wird über Button zur Verfügung gestellt.
+		 * 
+		 * 
 		editText = (EditText) findViewById(R.id.external_logins_evernote_email);
 		editor.putString(Constants.EVERNOTE_EMAIL, editText.getText().toString());
 		editText = (EditText) findViewById(R.id.external_logins_evernote_password);
 		editor.putString(Constants.EVERNOTE_PASSWORD, editText.getText().toString());
+		*/
 		
 		editText = (EditText) findViewById(R.id.external_logins_auphonic_email);
 		editor.putString(Constants.AUPHONIC_EMAIL, editText.getText().toString());
@@ -50,6 +55,12 @@ public class ExternalLogins extends Activity{
 		Intent intent = new Intent(this, Overview.class);
 	    startActivity(intent);
 		
+	}
+	
+	public void onClickEvernote (View view) {
+		//TODO validate login
+		Intent intent = new Intent(this, HelloEDAM.class);
+	    startActivity(intent);
 	}
 	
 }

@@ -126,6 +126,9 @@
      
     
     
+
     
+    <string name="chosen_workshop">ausgewählter Workshop</string> 
+    <string name="testing_podio_headline">wenn hier etw. steht funkioniert Podiozugriff</string> 
     
 </resources>
