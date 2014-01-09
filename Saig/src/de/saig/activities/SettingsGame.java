@@ -7,7 +7,7 @@ import java.util.List;
 import org.apache.http.client.ClientProtocolException;
 import org.json.JSONException;
 
-import android.R.integer;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -31,12 +31,14 @@ public class SettingsGame extends Activity{
 	Spinner spinnerGame;
 	Spinner spinnerRound;
 	SharedPreferences sharedPrefs;
+	SharedPreferences preferences;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_settings_game);
 		
+
 		
 		// Dieser Teil muss in jede Activity die einen Netzwerkzugriff hat
 		StrictMode.ThreadPolicy policy = new 
@@ -71,6 +73,7 @@ public class SettingsGame extends Activity{
 		spinnerWorkshop = (Spinner) findViewById(R.id.settings_workshop_spinner);
 		ArrayAdapter  <Workshop> dataAdapter = new ArrayAdapter  <Workshop> (this, android.R.layout.simple_spinner_item,a );
 		spinnerWorkshop.setAdapter(dataAdapter);
+		//spinnerGame.setOnItemSelectedListener(new MyOnWorkshopSelectedListener());
 	
 		//Spinner Game		
 		spinnerGame = (Spinner) findViewById(R.id.spinnerGame);
@@ -78,7 +81,12 @@ public class SettingsGame extends Activity{
 				this, R.array.spinnerGame, android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinnerGame.setAdapter(adapter);
-		spinnerGame.setOnItemSelectedListener(new MyOnItemSelectedListener());
+		spinnerGame.setOnItemSelectedListener(new MyOnGameSelectedListener());
+		
+	
+
+		
+		
 	}
 	
 	
@@ -90,12 +98,23 @@ public class SettingsGame extends Activity{
 	
 	
 	
-	public class MyOnItemSelectedListener implements OnItemSelectedListener {
+	public class MyOnGameSelectedListener implements OnItemSelectedListener {
 		
 		@Override
 		public void onItemSelected(AdapterView<?> parent,
 			View view, int pos, long id) {
-			String str = parent.getItemAtPosition(pos).toString();	//normalerweise noch .toUpper()
+			String gameName = parent.getItemAtPosition(pos).toString();	
+			
+			
+			//preferences = PreferenceManager.getDefaultSharedPreferences(this);
+			
+			  preferences = getSharedPreferences(String.valueOf(R.string.preference_file_key), Context.MODE_PRIVATE);
+			
+			  SharedPreferences.Editor editor = preferences.edit();
+			  editor.putString("thisName",gameName);
+			  editor.commit();
+			
+			//normalerweise noch .toUpper()
 			//TODO: statt "editText1.setText(str);" muss man hier das aktuelle Spiel auf das ausgewählte spiel setzen
 		}
 		
@@ -104,7 +123,6 @@ public class SettingsGame extends Activity{
 			//Tue nichts
 		}
 	}
-	
 	
 	
 	

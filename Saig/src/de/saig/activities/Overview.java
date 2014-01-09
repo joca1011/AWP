@@ -17,6 +17,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -98,31 +99,22 @@ public class Overview extends Activity {
 		// TODO: Wie geplant oben immer anzeigen welcher Workshop, Game, Round, siehe Todo oben
 		// TODO: Danach in Gamesettings einstellen, dass die shared preferances angepasst werden
 		
-		
-		String url = "/podio/workshops";
-		InputStream content = null;
-		HttpClient httpclient = new DefaultHttpClient();
-		 
-		
-		 sharedPrefs = getSharedPreferences(String.valueOf(R.string.preference_file_key), Context.MODE_PRIVATE);
 	      
-	     //String test1 = sharedPrefs.getString(Constants.WORKSHOP_ID, null)+"/"+sharedPrefs.getString(Constants.PODIO_PASSWORD, null);
-	      
-	    // String test1 = sharedPrefs.getString(getString(Constants.WORKSHOP_ID), null);
-	    //		 		sharedPrefs.getString(getString(Constants.GAME_ID), null)+" und "+
-	    	//	 		sharedPrefs.getString(getString(Constants.ROUND_NR), null);
-		 
-		int WorkshopId = sharedPrefs.getInt("WORKSHOP_ID",Constants.WORKSHOP_ID);
-		int GameId = sharedPrefs.getInt("GameId",Constants.GAME_ID);
-		int RoundNr = sharedPrefs.getInt("RoundNr",Constants.ROUND_NR);
+		  SharedPreferences preferences = getSharedPreferences(String.valueOf(R.string.preference_file_key), Context.MODE_PRIVATE);
+		  int currentWorkshopId = preferences.getInt("currentWorkshopId",0);
+		  int currentGameId = preferences.getInt("currentGameId",0);
+		  int currentRoundId = preferences.getInt("currentRoundId",0);
+		  
+		  String TESTSTRING = preferences.getString("thisName","");
+		  
+		  
+		  String WorkshopDataString =  	 	 "  WorkshopId: "+currentWorkshopId
+											+"  Game Id: "+currentGameId
+											+"  Round Nr: "+currentRoundId
+											+"  Unnnnnnnd: "+TESTSTRING;
 
-		String WorkshopDataString =  	 "  WorkshopId: "+Integer.toString(WorkshopId)
-										+"  Game Id: "+Integer.toString(GameId)
-										+"  Round Nr: "+Integer.toString(RoundNr);
-	     textviewHeadline.setText(WorkshopDataString);
-		
-		
-		/*Shared Preferences Test*/
+		  textviewHeadline.setText(WorkshopDataString);
+	     
 		
 	}
 	
