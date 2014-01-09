@@ -1,6 +1,7 @@
 package de.saig.podio;
 
 import java.util.Date;
+import java.util.List;
 
 
 public class Workshop {
@@ -8,11 +9,11 @@ public class Workshop {
 	private Integer id;
 	private String titel;
 	private Date datum;
-	private Category innovationGames;
+	private List<Category> innovationGames;
 	private int anzahlRunden;
 	
 	public Workshop(Integer id, String titel, Date datum,
-			Category innovationGames, int anzahlRunden) {
+			List<Category> innovationGames, int anzahlRunden) {
 		super();
 		this.id = id;
 		this.titel = titel;
@@ -45,11 +46,11 @@ public class Workshop {
 		this.datum = datum;
 	}
 
-	public Category getInnovationGames() {
+	public List<Category> getInnovationGames() {
 		return innovationGames;
 	}
 
-	public void setInnovationGames(Category innovationGames) {
+	public void setInnovationGames(List<Category> innovationGames) {
 		this.innovationGames = innovationGames;
 	}
 
