@@ -103,6 +103,9 @@ public class SettingsGame extends Activity{
 		@Override
 		public void onItemSelected(AdapterView<?> parent,
 			View view, int pos, long id) {
+			
+			
+			try {
 			String gameName = parent.getItemAtPosition(pos).toString();	
 			
 			
@@ -114,6 +117,13 @@ public class SettingsGame extends Activity{
 			  editor.putString("thisName",gameName);
 			  editor.commit();
 			
+			  
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				
+				System.out.println("Hier gabs den Fehler FFF :\n"+e.getMessage());
+			}
+			  
 			//normalerweise noch .toUpper()
 			//TODO: statt "editText1.setText(str);" muss man hier das aktuelle Spiel auf das ausgewählte spiel setzen
 		}
