@@ -105,16 +105,22 @@ public class Overview extends Activity {
 		  int currentGameId = preferences.getInt("currentGameId",0);
 		  int currentRoundId = preferences.getInt("currentRoundId",0);
 		  
-		  String TESTSTRING = preferences.getString("thisName","");
+		  String currentWorkshopName = preferences.getString("currentWorkshopName","");
+		  String currentGameName = preferences.getString("currentGameName","");
+		  String currentRoundName = preferences.getString("currentRoundName","");
 		  
 		  
-		  String WorkshopDataString =  	 	 "  WorkshopId: "+currentWorkshopId
-											+"  Game Id: "+currentGameId
-											+"  Round Nr: "+currentRoundId
-											+"  Unnnnnnnd: "+TESTSTRING;
-
+		  
+		  String WorkshopDataString =  	 	 "  Workshop: "+currentWorkshopName
+											+"  Game : "+currentGameName
+											+"  Round Nr: "+currentRoundName
+										    +"  _____WorkshopId: "+currentWorkshopId
+											+"  GameId : "+currentGameId
+											+"  RoundId: "+currentRoundId;
+		  
+		  
 		  textviewHeadline.setText(WorkshopDataString);
-	     
+		  
 		
 	}
 	

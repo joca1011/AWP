@@ -56,14 +56,12 @@
 	    <LinearLayout
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content" >
-	
-	        <Button
-	            android:id="@+id/DROPDOWNMENÜ3"
-	            android:layout_width="130dp"
+
+		    <Spinner
+		        android:id="@+id/spinnerRound"
+	            android:layout_width="0dip"
 	            android:layout_height="wrap_content"
-	            android:layout_marginTop="20dp"
-	            android:onClick=""
-	            android:text="dropdown" />
+	            android:layout_weight="1.55" />
 	        
 		    <Button
 		        android:id="@+id/settings_new_round"
@@ -72,10 +70,10 @@
 		        android:layout_marginTop="20dp"
 		        android:onClick="newRound"
 		        android:text="@string/game_settings_new_round" />
-    
-	    </LinearLayout>
+    	</LinearLayout> 
 	    
-
+	    
+	    
 
 	        <Button
 	            android:id="@+id/vae_settings_Settings_game"

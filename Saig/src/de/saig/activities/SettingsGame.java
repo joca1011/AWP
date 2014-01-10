@@ -71,27 +71,54 @@ public class SettingsGame extends Activity{
 		}
 		
 		spinnerWorkshop = (Spinner) findViewById(R.id.settings_workshop_spinner);
-		ArrayAdapter  <Workshop> dataAdapter = new ArrayAdapter  <Workshop> (this, android.R.layout.simple_spinner_item,a );
-		spinnerWorkshop.setAdapter(dataAdapter);
+		ArrayAdapter  <Workshop> workshopAdapter = new ArrayAdapter  <Workshop> (this, android.R.layout.simple_spinner_item,a );
+		spinnerWorkshop.setAdapter(workshopAdapter);
 		//spinnerGame.setOnItemSelectedListener(new MyOnWorkshopSelectedListener());
 	
 		//Spinner Game		
 		spinnerGame = (Spinner) findViewById(R.id.spinnerGame);
-		  ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+		ArrayAdapter<CharSequence> gameAdapter = ArrayAdapter.createFromResource(
 				this, R.array.spinnerGame, android.R.layout.simple_spinner_item);
-		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		spinnerGame.setAdapter(adapter);
-		spinnerGame.setOnItemSelectedListener(new MyOnGameSelectedListener());
+		gameAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		spinnerGame.setAdapter(gameAdapter);
+		//spinnerGame.setOnItemSelectedListener(new MyOnGameSelectedListener());
 		
+		//Spinner Round		
+		spinnerRound = (Spinner) findViewById(R.id.spinnerRound);
+		ArrayAdapter<CharSequence> roundAdapter = ArrayAdapter.createFromResource(
+				this, R.array.spinnerRound, android.R.layout.simple_spinner_item);
+		roundAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		spinnerRound.setAdapter(roundAdapter);
+		//spinnerRound.setOnItemSelectedListener(new MyOnRoundSelectedListener());
+			
 	
-
-		
-		
 	}
 	
 	
 
+	public class MyOnWorkshopSelectedListener implements OnItemSelectedListener {
+		@Override
+		public void onItemSelected(AdapterView<?> parent,
+			View view, int pos, long id) {
+			String workshopName = parent.getItemAtPosition(pos).toString();	
 
+			//TODO: Man muss es schaffen, das hier nicht der Name des sondern die ID übergeben wird, 
+			//sodass man mit dieser dann weiterarbeiten kann
+			/*
+			  preferences = getSharedPreferences(String.valueOf(R.string.preference_file_key), Context.MODE_PRIVATE);
+			
+			  SharedPreferences.Editor editor = preferences.edit();
+			  editor.putString("currentWorkshopName",workshopName);
+			  editor.commit();
+			  */
+		}
+		
+		@Override
+		public void onNothingSelected(AdapterView parent){
+			//Tue nichts
+		}
+	}
+	
 	
 	
 	
@@ -104,7 +131,7 @@ public class SettingsGame extends Activity{
 		public void onItemSelected(AdapterView<?> parent,
 			View view, int pos, long id) {
 			
-			
+			/*
 			try {
 			String gameName = parent.getItemAtPosition(pos).toString();	
 			
@@ -123,7 +150,7 @@ public class SettingsGame extends Activity{
 				
 				System.out.println("Hier gabs den Fehler FFF :\n"+e.getMessage());
 			}
-			  
+			 */ 
 			//normalerweise noch .toUpper()
 			//TODO: statt "editText1.setText(str);" muss man hier das aktuelle Spiel auf das ausgewählte spiel setzen
 		}
@@ -135,6 +162,31 @@ public class SettingsGame extends Activity{
 	}
 	
 	
+	
+	
+	
+	public class MyOnRoundSelectedListener implements OnItemSelectedListener {
+		@Override
+		public void onItemSelected(AdapterView<?> parent,
+			View view, int pos, long id) {
+			String roundName = parent.getItemAtPosition(pos).toString();	
+
+			//TODO: Man muss es schaffen, das hier nicht der Name des sondern die ID übergeben wird, 
+			//sodass man mit dieser dann weiterarbeiten kann
+			/*
+			  preferences = getSharedPreferences(String.valueOf(R.string.preference_file_key), Context.MODE_PRIVATE);
+			
+			  SharedPreferences.Editor editor = preferences.edit();
+			  editor.putString("currentRoundName",roundName);
+			  editor.commit();
+			  */
+		}
+		
+		@Override
+		public void onNothingSelected(AdapterView parent){
+			//Tue nichts
+		}
+	}	
 	
 	
 	
