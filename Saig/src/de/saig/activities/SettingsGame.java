@@ -7,7 +7,6 @@ import java.util.List;
 import org.apache.http.client.ClientProtocolException;
 import org.json.JSONException;
 
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -16,14 +15,12 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.AdapterView.OnItemSelectedListener;
 import de.awp.saig.R;
-import de.saig.activities.MediaOverview.MyOnItemSelectedListener;
 import de.saig.podio.PodioService;
 import de.saig.podio.Workshop;
-import de.saig.util.Constants;
 
 public class SettingsGame extends Activity{
 	
@@ -73,8 +70,8 @@ public class SettingsGame extends Activity{
 		spinnerWorkshop = (Spinner) findViewById(R.id.settings_workshop_spinner);
 		ArrayAdapter  <Workshop> workshopAdapter = new ArrayAdapter  <Workshop> (this, android.R.layout.simple_spinner_item,a );
 		spinnerWorkshop.setAdapter(workshopAdapter);
-		//spinnerGame.setOnItemSelectedListener(new MyOnWorkshopSelectedListener());
-	
+		spinnerWorkshop.setOnItemSelectedListener(new MyOnWorkshopSelectedListener());
+		
 		//Spinner Game		
 		spinnerGame = (Spinner) findViewById(R.id.spinnerGame);
 		ArrayAdapter<CharSequence> gameAdapter = ArrayAdapter.createFromResource(
@@ -89,7 +86,7 @@ public class SettingsGame extends Activity{
 				this, R.array.spinnerRound, android.R.layout.simple_spinner_item);
 		roundAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinnerRound.setAdapter(roundAdapter);
-		//spinnerRound.setOnItemSelectedListener(new MyOnRoundSelectedListener());
+		spinnerRound.setOnItemSelectedListener(new MyOnRoundSelectedListener());
 			
 	
 	}
@@ -101,16 +98,20 @@ public class SettingsGame extends Activity{
 		public void onItemSelected(AdapterView<?> parent,
 			View view, int pos, long id) {
 			String workshopName = parent.getItemAtPosition(pos).toString();	
+			
+			Workshop workshop = (Workshop) parent.getItemAtPosition(pos);
 
+			int workshopId = workshop.getId();
 			//TODO: Man muss es schaffen, das hier nicht der Name des sondern die ID übergeben wird, 
 			//sodass man mit dieser dann weiterarbeiten kann
-			/*
+			
 			  preferences = getSharedPreferences(String.valueOf(R.string.preference_file_key), Context.MODE_PRIVATE);
 			
 			  SharedPreferences.Editor editor = preferences.edit();
 			  editor.putString("currentWorkshopName",workshopName);
+			  editor.putInt("currentWorkshopId",workshopId);
 			  editor.commit();
-			  */
+			  
 		}
 		
 		@Override
@@ -132,6 +133,9 @@ public class SettingsGame extends Activity{
 			View view, int pos, long id) {
 			
 			/*
+			 * 
+			 * TODO: DAS KANN HIER GARNICHT GEHEN; WEIL WIRL HIER TEXT UND KEIN OBJEKT RAUSZIEHEN!!!!!!!!!
+			 * 
 			try {
 			String gameName = parent.getItemAtPosition(pos).toString();	
 			
@@ -173,13 +177,13 @@ public class SettingsGame extends Activity{
 
 			//TODO: Man muss es schaffen, das hier nicht der Name des sondern die ID übergeben wird, 
 			//sodass man mit dieser dann weiterarbeiten kann
-			/*
+			
 			  preferences = getSharedPreferences(String.valueOf(R.string.preference_file_key), Context.MODE_PRIVATE);
 			
 			  SharedPreferences.Editor editor = preferences.edit();
 			  editor.putString("currentRoundName",roundName);
 			  editor.commit();
-			  */
+			  
 		}
 		
 		@Override
