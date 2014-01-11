@@ -162,14 +162,92 @@ public class PodioService {
 		
 	}
 	
-	public DataAnnotation getAnnotationById(Activity activity, int id) {
-		return null;
+	public DataAnnotation getAnnotationById(Activity activity, int id) throws ClientProtocolException, IOException, JSONException {
+		String url = "/podio/annotations";
+		InputStream content = null;
+		HttpClient httpclient = new DefaultHttpClient();
 		
+		
+		  SharedPreferences sharedPrefs = activity.getSharedPreferences(String.valueOf(R.string.preference_file_key), Context.MODE_PRIVATE);
+	      
+	      HttpGet httpGet = new HttpGet(url+"/"+id+"/"+sharedPrefs.getString(Constants.PODIO_EMAIL, null)+"/"+sharedPrefs.getString(Constants.PODIO_PASSWORD, null));
+	      
+	      
+	      
+	      HttpResponse response = httpclient.execute(new HttpHost(PodioConfig.host), httpGet);
+		    
+		    content = response.getEntity().getContent();
+		    BufferedReader reader = new BufferedReader(new InputStreamReader(content));
+		    StringBuilder out = new StringBuilder();
+		    String line;
+		    while ((line = reader.readLine()) != null) {
+		        out.append(line);
+		    }
+		    JSONObject json = new JSONObject(out.toString());
+		id = json.getInt("id");
+		String titel = json.getString("titel");
+		int appreferenz = json.getInt("app-referenz");
+		int fileId = json.getInt("file-id");
+		
+		return new DataAnnotation(titel, appreferenz, null);
 	}
 	
-	public DataObject getObjectById(Activity activity, int id) {
-		return null;
+	public DataObject getObjectById(Activity activity, int id) throws JSONException, ClientProtocolException, IOException {
 		
+		String url = "/podio/items";
+		InputStream content = null;
+		HttpClient httpclient = new DefaultHttpClient();
+		
+		
+		  SharedPreferences sharedPrefs = activity.getSharedPreferences(String.valueOf(R.string.preference_file_key), Context.MODE_PRIVATE);
+	      
+	      HttpGet httpGet = new HttpGet(url+"/"+id+"/"+sharedPrefs.getString(Constants.PODIO_EMAIL, null)+"/"+sharedPrefs.getString(Constants.PODIO_PASSWORD, null));
+	      
+	      
+	      
+	      HttpResponse response = httpclient.execute(new HttpHost(PodioConfig.host), httpGet);
+		    
+		    content = response.getEntity().getContent();
+		    BufferedReader reader = new BufferedReader(new InputStreamReader(content));
+		    StringBuilder out = new StringBuilder();
+		    String line;
+		    while ((line = reader.readLine()) != null) {
+		        out.append(line);
+		    }
+		    JSONObject json = new JSONObject(out.toString());
+		    
+				id = json.getInt("id");
+				String titel = json.getString("titel");
+				int bild= json.getInt("bild");
+				int app_referenz = json.getInt("app-referenz");
+				Category kategorie = null;
+				int runde = json.getInt("runde");
+		
+				
+				
+				switch (json.getInt("kategorien")) {	
+	case 1:{
+		kategorie = Category.ME_AND_MY_SHADOW;
+		break;
+	}
+	case 2:{
+		kategorie = Category.PRODUCT_BOX;
+		break;
+	}
+	case 3:{
+		kategorie = Category.SPEED_BOAT;
+		break;
+	}
+	case 4:{
+		kategorie = Category.PRUNE_THE_PRODUCT_TREE;
+		break;
+	}
+
+	default:
+		break;
+	}
+				
+				return new DataObject(titel, null, app_referenz, kategorie, runde);
 	}
 	
 	public List<DataObject> getObjectsByWorkshopId(Activity activity, int id) {
