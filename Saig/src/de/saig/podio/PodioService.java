@@ -250,9 +250,65 @@ public class PodioService {
 				return new DataObject(titel, null, app_referenz, kategorie, runde);
 	}
 	
-	public List<DataObject> getObjectsByWorkshopId(Activity activity, int id) {
-		return null;
+	public List<DataObject> getObjectsByWorkshopId(Activity activity, int id) throws ClientProtocolException, IOException, JSONException {
+		String url = "/podio/workshops/"+ id + "/items";
+		InputStream content = null;
+		HttpClient httpclient = new DefaultHttpClient();
 		
+		
+		  SharedPreferences sharedPrefs = activity.getSharedPreferences(String.valueOf(R.string.preference_file_key), Context.MODE_PRIVATE);
+	      
+	      HttpGet httpGet = new HttpGet(url+"/"+sharedPrefs.getString(Constants.PODIO_EMAIL, null)+"/"+sharedPrefs.getString(Constants.PODIO_PASSWORD, null));
+	      
+	      
+	      
+	      HttpResponse response = httpclient.execute(new HttpHost(PodioConfig.host), httpGet);
+		    
+		    content = response.getEntity().getContent();
+		    BufferedReader reader = new BufferedReader(new InputStreamReader(content));
+		    StringBuilder out = new StringBuilder();
+		    String line;
+		    while ((line = reader.readLine()) != null) {
+		        out.append(line);
+		    }
+		    List<DataObject> dataObjects = new ArrayList<DataObject>();
+		    JSONArray json = new JSONArray(out.toString());
+		    for (int i = 0; i < json.length(); i++) {
+				JSONObject jo = json.getJSONObject(i);
+			
+				id = jo.getInt("id");
+				String titel = jo.getString("titel");
+				int bild= jo.getInt("bild");
+				int app_referenz = jo.getInt("app-referenz");
+				Category kategorie = null;
+				int runde = jo.getInt("runde");
+		
+				
+				
+				switch (jo.getInt("kategorien")) {	
+	case 1:{
+		kategorie = Category.ME_AND_MY_SHADOW;
+		break;
+	}
+	case 2:{
+		kategorie = Category.PRODUCT_BOX;
+		break;
+	}
+	case 3:{
+		kategorie = Category.SPEED_BOAT;
+		break;
+	}
+	case 4:{
+		kategorie = Category.PRUNE_THE_PRODUCT_TREE;
+		break;
+	}
+
+	default:
+		break;
+	}
+				dataObjects.add(new DataObject(titel, null, app_referenz, kategorie, runde));
+		    }
+		    return dataObjects;
 	}
 	
 	//Adds geben das Objekt mit der generierten Id zurück
