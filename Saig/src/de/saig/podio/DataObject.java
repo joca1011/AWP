@@ -20,6 +20,13 @@ public class DataObject {
 		this.kategorien = kategorien;
 		this.runde = runde;
 	}
+	
+
+	public DataObject(String titel) {
+		super();
+		this.titel = titel;
+	}
+	
 
 	public Integer getId() {
 		return id;
@@ -68,5 +75,25 @@ public class DataObject {
 	public void setRunde(int runde) {
 		this.runde = runde;
 	}
+
+	@Override		//TODO: nur übergangs toString
+	public String toString() {
+		String kategorie="";
+		String runde="";
+		if(appReferenz!=0){
+			
+			if(this.getKategorien()==Category.ME_AND_MY_SHADOW)	{kategorie=" Me and my Shadow";}
+			if(this.getKategorien()==Category.PRODUCT_BOX)	{kategorie=" Product Box";}
+			if(this.getKategorien()==Category.PRUNE_THE_PRODUCT_TREE)	{kategorie=" Prune the Product Tree";}
+			if(this.getKategorien()==Category.SPEED_BOAT)	{kategorie=" Speed Boat";}
+			
+			runde =" "+this.runde;
+		}
+		
+		return this.titel+kategorie+runde;
+	}
+
+
+	
 	
 }

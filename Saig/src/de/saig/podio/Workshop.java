@@ -64,6 +64,11 @@ public class Workshop {
 	
 	@Override
 	public String toString() {
-		return this.getTitel() + " (" + this.getDatum().getDate() + "." + this.getDatum().getMonth() + "." + (this.getDatum().getYear()+1900) + ")";
+		//This two opportunities of date are just needed for the spinner headline
+		String datum;
+		if(this.id==0){datum="";}
+		else {datum =" (" + this.getDatum().getDate() + "." + this.getDatum().getMonth() + "." + (this.getDatum().getYear()+1900) + ")" ;}
+		
+		return this.getTitel() + datum;
 	}
 }
