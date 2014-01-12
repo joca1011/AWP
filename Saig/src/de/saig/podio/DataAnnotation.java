@@ -9,8 +9,9 @@ public class DataAnnotation {
 	private int appReferenz;
 	private File file;
 	
-	public DataAnnotation(String titel, int appReferenz, File file) {
+	public DataAnnotation(int id, String titel, int appReferenz, File file) {
 		super();
+		this.id = id;
 		this.titel = titel;
 		this.appReferenz = appReferenz;
 		this.file = file;

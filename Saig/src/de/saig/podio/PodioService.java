@@ -157,9 +157,39 @@ public class PodioService {
 		return new Workshop(id, titel, datum, innovationGames, runden);				
 	}
 	
-	public List<DataAnnotation> getAnnotationsByItemId(Activity activity) {
-		return null;
+	public List<DataAnnotation> getAnnotationsByItemId(Activity activity, int id) throws JSONException, IllegalStateException, IOException {
+		String url = "/podio/items/"+ id + "/annotation";
+		InputStream content = null;
+		HttpClient httpclient = new DefaultHttpClient();
 		
+		
+		  SharedPreferences sharedPrefs = activity.getSharedPreferences(String.valueOf(R.string.preference_file_key), Context.MODE_PRIVATE);
+	      
+	      HttpGet httpGet = new HttpGet(url+"/"+sharedPrefs.getString(Constants.PODIO_EMAIL, null)+"/"+sharedPrefs.getString(Constants.PODIO_PASSWORD, null));
+	      
+	      
+	      
+	      HttpResponse response = httpclient.execute(new HttpHost(PodioConfig.host), httpGet);
+		    
+		    content = response.getEntity().getContent();
+		    BufferedReader reader = new BufferedReader(new InputStreamReader(content));
+		    StringBuilder out = new StringBuilder();
+		    String line;
+		    while ((line = reader.readLine()) != null) {
+		        out.append(line);
+		    }
+		    List<DataAnnotation> dataAnnotations = new ArrayList<DataAnnotation>();
+		    JSONArray json = new JSONArray(out.toString());
+		    for (int i = 0; i < json.length(); i++) {
+				JSONObject jo = json.getJSONObject(i);
+				
+				id = jo.getInt("id");
+				String titel = jo.getString("titel");
+				int appReferenz = jo.getInt("app-referenz");
+				int fileId = jo.getInt("file-id");
+				dataAnnotations.add(new DataAnnotation(id, titel, appReferenz, null));
+		    }
+		return dataAnnotations;
 	}
 	
 	public DataAnnotation getAnnotationById(Activity activity, int id) throws ClientProtocolException, IOException, JSONException {
@@ -189,7 +219,7 @@ public class PodioService {
 		int appreferenz = json.getInt("app-referenz");
 		int fileId = json.getInt("file-id");
 		
-		return new DataAnnotation(titel, appreferenz, null);
+		return new DataAnnotation(id, titel, appreferenz, null);
 	}
 	
 	public DataObject getObjectById(Activity activity, int id) throws JSONException, ClientProtocolException, IOException {
