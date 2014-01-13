@@ -26,8 +26,8 @@ public class Login extends Activity{
 		  SharedPreferences.Editor editor = sharedPrefs.edit();
 		  editor.putString("thisName","Peeeeed2");
 		  editor.putInt("currentWorkshopId",555);
-		  editor.putInt("currentGameId",666);
-		  editor.putInt("currentRoundId",777);
+		  editor.putInt("currentGameId",0);
+		  editor.putInt("currentRoundId",0);
 		  
 		  editor.putString("currentWorkshopName","");
 		  editor.putString("currentGameName","");

@@ -110,14 +110,15 @@ public class Overview extends Activity {
 		  String currentRoundName = preferences.getString("currentRoundName","");
 		  
 		  
+		  String WorkshopDataString;
 		  
-		  String WorkshopDataString =  	 	 "  Workshop: "+currentWorkshopName
+		  if(currentWorkshopId==0){ WorkshopDataString = "kein Spiel ausgewählt";}
+		  else{WorkshopDataString =  	 	 "  Workshop: "+currentWorkshopName
 											+"  Game : "+currentGameName
 											+"  Round Nr: "+currentRoundName
 										    +"  _____WorkshopId: "+currentWorkshopId
 											+"  GameId : "+currentGameId
-											+"  RoundId: "+currentRoundId;
-		  
+											+"  RoundId: "+currentRoundId;}
 		  
 		  textviewHeadline.setText(WorkshopDataString);
 		  

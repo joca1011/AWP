@@ -3,6 +3,8 @@ package de.saig.activities;
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -20,12 +22,15 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 import de.awp.saig.R;
 import de.saig.podio.Category;
 import de.saig.podio.DataAnnotation;
 import de.saig.podio.DataObject;
 import de.saig.podio.PodioService;
 import de.saig.podio.Workshop;
+import de.saig.util.Constants;
+
 
 public class SettingsGame extends Activity{
 	
@@ -34,13 +39,17 @@ public class SettingsGame extends Activity{
 	Spinner spinnerRound;
 	SharedPreferences preferences;
 	PodioService ps = new PodioService();
+	TextView textView1;
+
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_settings_game);
 		
-
+		textView1 = (TextView) findViewById(R.id.textView1);
+		
+		
 		
 		// Dieser Teil muss in jede Activity die einen Netzwerkzugriff hat
 		StrictMode.ThreadPolicy policy = new 
@@ -90,7 +99,7 @@ public class SettingsGame extends Activity{
 		
 		
 		//Spinner Game	
-		setSpinnerGame(currentWorkshopId);
+		setSpinnerGame();
 		
 		
 		
@@ -133,12 +142,17 @@ public class SettingsGame extends Activity{
 			  
 			  editor.commit();
 			  
-
+			  
+			  	
+			  
+			  
 			  
 			  //TODO: Hier sollte irgendwie die Seite neu geladen werden, damit damit veränderte spinner angezegit werden können,
 			  // oder der spinner Worksop sollte verändert werden
 			  
-			  //changeSpinnerGame(workshopId);
+			  //textView1.setText(" -->"+Integer.toString(currentWorkshopId));
+			  
+			  //textView1.setText(" -->"+Category.getEnum(3).getId());
 			  
 		}
 		
@@ -157,20 +171,21 @@ public class SettingsGame extends Activity{
 		public void onItemSelected(AdapterView<?> parent,
 			View view, int pos, long id) {
 			 
-		      DataObject game = (DataObject) parent.getItemAtPosition(pos);
-		      
-		      String gameName = game.toString();
-			   // int zahl1 = game.getId().intValue();
-			    
-			    /*
+		     Category game = (Category) parent.getItemAtPosition(pos);
+		     int gameId = game.getId();
+		     
+		     
+		     
+		     textView1.setText(" +++ sdfsdfsd ");
+		     
 			  preferences = getSharedPreferences(String.valueOf(R.string.preference_file_key), Context.MODE_PRIVATE);
 			  
 			  SharedPreferences.Editor editor = preferences.edit();
 
-			  editor.putString("currentGameName",gameName);
+			 // editor.putString("currentGameName",gameName);
 			  editor.putInt("currentGameId",gameId);
 			  editor.commit();
-			*/
+			  
 			//normalerweise noch .toUpper()
 			//TODO: statt "editText1.setText(str);" muss man hier das aktuelle Spiel auf das ausgewählte spiel setzen
 		}
@@ -234,6 +249,24 @@ public class SettingsGame extends Activity{
 	
 	
 	
+	
+	
+	public void setSpinnerGame(){
+		List<Category> allGames = new ArrayList<Category>(Arrays.asList(Category.values()));
+		ArrayAdapter  <Category> gameAdapter = 
+				new ArrayAdapter  <Category> (this, android.R.layout.simple_spinner_item, allGames);
+		spinnerGame = (Spinner) findViewById(R.id.spinnerGame);
+		spinnerGame.setAdapter(gameAdapter);
+		/*
+		spinnerGame.setOnItemSelectedListener(new MyOnGameSelectedListener());
+		*/
+		//spinnerGame.setSelection(gameListPos);
+	}
+	
+	
+	
+	
+	
 	public void setSpinnerGame(int currentWorkshopId){
 		//Spinner Game	
 		List<DataObject> listAllGamesAndRoundsOfTheWorkshop = null;
@@ -278,9 +311,14 @@ public class SettingsGame extends Activity{
 		//spinnerGame.setSelection(gameListPos);
 	}
 	
-	/*
+	
 	public void changeSpinnerGame(int currentWorkshopId){
 		//Spinner Game	
+		
+		
+		
+		/*
+		
 		List<DataObject> listAllGamesAndRoundsOfTheW = null;
 		
 		if(currentWorkshopId!=0)		//Means: If a workshop is selected
@@ -331,9 +369,9 @@ public class SettingsGame extends Activity{
 		*/
 		
 	
-	/*
+	
 	}
-*/	
+
 	
 	
 	
