@@ -25,7 +25,7 @@ public class Login extends Activity{
 		  SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this); */
 		  SharedPreferences.Editor editor = sharedPrefs.edit();
 		  editor.putString("thisName","Peeeeed2");
-		  editor.putInt("currentWorkshopId",555);
+		  editor.putInt("currentWorkshopId",555);		//Darf kein 0 sein, da Integer, stat int. 555 geht, da Workshop Ids immer länger sind
 		  editor.putInt("currentGameId",0);
 		  editor.putInt("currentRoundId",0);
 		  

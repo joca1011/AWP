@@ -35,7 +35,6 @@ public class Overview extends Activity {
 
 	Spinner spinnerSettings;
 	TextView textviewHeadline;
-	TextView textviewPodioTest;
 	SharedPreferences sharedPrefs;
 	
 	
@@ -52,7 +51,6 @@ public class Overview extends Activity {
 		
 		
 		textviewHeadline = (TextView) findViewById(R.id.textview_headline);
-		textviewPodioTest = (TextView) findViewById(R.id.textview_podio_test);
 		
 		
 		spinnerSettings = (Spinner) findViewById(R.id.spinnerSettings);
@@ -85,7 +83,6 @@ public class Overview extends Activity {
 			e.printStackTrace();
 		}
 		
-		textviewPodioTest.setText(a);
 		
 		/* Ende Podio Test Bereich */
 		
@@ -111,7 +108,7 @@ public class Overview extends Activity {
 		  
 		  String WorkshopDataString;
 		  
-		  if(currentWorkshopId==0){ WorkshopDataString = "kein Spiel ausgewählt";}
+		  if(currentWorkshopId==555){ WorkshopDataString = "kein Spiel ausgewählt";}
 		  else{WorkshopDataString =  	 	 "  Workshop: "+currentWorkshopName
 											+"\n  Game : "+currentGameName
 											+"\n  RoundId: "+currentRoundId;}

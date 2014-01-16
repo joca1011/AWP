@@ -54,19 +54,7 @@ public class SettingsGame extends Activity{
 		textView1 = (TextView) findViewById(R.id.textView1);
 		
 		
-		  preferences = getSharedPreferences(String.valueOf(R.string.preference_file_key), Context.MODE_PRIVATE);
-//		  int currentWorkshopId = preferences.getInt("currentWorkshopId",0);
-//		  int currentGameId = preferences.getInt("currentGameId",0);
-//		  int currentRoundId = preferences.getInt("currentRoundId",0);
-//		  
-//		  String currentWorkshopName = preferences.getString("currentWorkshopName","");
-//		  String currentGameName = preferences.getString("currentGameName","");
-//		
-//			selectedCategory = null;
-//			selectedWorkshop = null;
-		
-			selectedRound = preferences.getInt("currentRoundId",0);
-		
+
 		
 		// Dieser Teil muss in jede Activity die einen Netzwerkzugriff hat
 		StrictMode.ThreadPolicy policy = new 

@@ -82,12 +82,6 @@
 	            android:layout_marginTop="25dp"
 	            android:onClick="saveSettingsGame"
 	            android:text="@string/save" />
-
-	        <TextView
-	            android:id="@+id/textView1"
-	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"
-	            android:text="TextView" />
 	
 	        <Button
 	            android:id="@+id/backToOverview"

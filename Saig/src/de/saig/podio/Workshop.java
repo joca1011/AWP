@@ -62,6 +62,10 @@ public class Workshop {
 		this.anzahlRunden = anzahlRunden;
 	}
 	
+	
+	
+	
+	
 	@Override
 	public String toString() {
 		//This two opportunities of date are just needed for the spinner headline
