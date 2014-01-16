@@ -25,5 +25,27 @@ public enum Category {
 		return c;
 	}
 	
+	 public String getString(){
+			String x = "";
+			if(this==ME_AND_MY_SHADOW)			{x = "Me and My Shadow";}
+			if(this==PRODUCT_BOX)				{x = "Product Box";}
+			if(this==SPEED_BOAT)				{x = "Speed Boat";}
+			if(this==PRUNE_THE_PRODUCT_TREE)	{x = "Prune the Product Tree";}
+			
+			return x;
+		 }
 	
+	
+	 public Category stringToAnum(String x){
+		 	Category c = null;
+			if(x == "Me and My Shadow")			{c = Category.ME_AND_MY_SHADOW;}
+			if(x == "Product Box")				{c = Category.PRODUCT_BOX;}
+			if(x == "Speed Boat")				{c = Category.SPEED_BOAT;}
+			if(x == "Prune the Product Tree")	{c = Category.PRUNE_THE_PRODUCT_TREE;}
+			
+			return c;
+		 }
+	 
+	 
+	 
 }

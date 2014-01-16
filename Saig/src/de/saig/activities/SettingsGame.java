@@ -54,6 +54,19 @@ public class SettingsGame extends Activity{
 		textView1 = (TextView) findViewById(R.id.textView1);
 		
 		
+		  preferences = getSharedPreferences(String.valueOf(R.string.preference_file_key), Context.MODE_PRIVATE);
+//		  int currentWorkshopId = preferences.getInt("currentWorkshopId",0);
+//		  int currentGameId = preferences.getInt("currentGameId",0);
+//		  int currentRoundId = preferences.getInt("currentRoundId",0);
+//		  
+//		  String currentWorkshopName = preferences.getString("currentWorkshopName","");
+//		  String currentGameName = preferences.getString("currentGameName","");
+//		
+//			selectedCategory = null;
+//			selectedWorkshop = null;
+		
+			selectedRound = preferences.getInt("currentRoundId",0);
+		
 		
 		// Dieser Teil muss in jede Activity die einen Netzwerkzugriff hat
 		StrictMode.ThreadPolicy policy = new 
@@ -61,10 +74,6 @@ public class SettingsGame extends Activity{
 		StrictMode.setThreadPolicy(policy);
 		
 	
-		
-		//Spinner Workshop
-		
-		
 		
 		//Aktuellen Workshop bestimmen
 		preferences = getSharedPreferences(String.valueOf(R.string.preference_file_key), Context.MODE_PRIVATE);
@@ -100,21 +109,6 @@ public class SettingsGame extends Activity{
 			}
 		}
 
-		
-		
-		//Spinner Game	
-		//setSpinnerGame();
-		
-		
-
-		
-		//Spinner Round		
-//		spinnerRound = (Spinner) findViewById(R.id.spinnerRound);
-//		ArrayAdapter<Integer> roundAdapter = new ArrayAdapter  <Integer> (this, android.R.layout.simple_spinner_item, rounds );
-//		spinnerRound.setAdapter(roundAdapter);
-//		spinnerRound.setOnItemSelectedListener(new MyOnRoundSelectedListener());
-			
-	
 	}
 	
 	
@@ -131,30 +125,16 @@ public class SettingsGame extends Activity{
 			
 			
 			
-//			int workshopId = workshop.getId();
-//	
-//			
-//			  preferences = getSharedPreferences(String.valueOf(R.string.preference_file_key), Context.MODE_PRIVATE);
-//			
-//			  int currentWorkshopId = preferences.getInt("currentWorkshopId",0);
-//			  
-//			  SharedPreferences.Editor editor = preferences.edit();
-//			  editor.putString("currentWorkshopName",workshopName);
-//			  editor.putInt("currentWorkshopId",workshopId);
-//			  
-//			  editor.commit();
+			  int workshopId = selectedWorkshop.getId();
+			  preferences = getSharedPreferences(String.valueOf(R.string.preference_file_key), Context.MODE_PRIVATE);
+
+
+			  SharedPreferences.Editor editor = preferences.edit();
+			  editor.putString("currentWorkshopName",selectedWorkshop.getTitel());
+			  editor.putInt("currentWorkshopId",selectedWorkshop.getId());
 			  
+			  editor.commit();
 			  
-			  	
-			  
-			  
-			  
-			  //TODO: Hier sollte irgendwie die Seite neu geladen werden, damit damit veränderte spinner angezegit werden können,
-			  // oder der spinner Worksop sollte verändert werden
-			  
-			  //textView1.setText(" -->"+Integer.toString(currentWorkshopId));
-			  
-			  //textView1.setText(" -->"+Category.getEnum(3).getId());
 			  
 		}
 		
@@ -184,24 +164,12 @@ public class SettingsGame extends Activity{
 		@Override
 		public void onItemSelected(AdapterView<?> parent,
 			View view, int pos, long id) {
-			 
 		     selectedCategory = (Category) parent.getItemAtPosition(pos);
-//		     int gameId = game.getId();
-//		     
-//		     
-//		     
-//		     textView1.setText(" +++ sdfsdfsd ");
-//		     
-//			  preferences = getSharedPreferences(String.valueOf(R.string.preference_file_key), Context.MODE_PRIVATE);
-//			  
-//			  SharedPreferences.Editor editor = preferences.edit();
-//
-//			 // editor.putString("currentGameName",gameName);
-//			  editor.putInt("currentGameId",gameId);
-//			  editor.commit();
-//			  
-//			//normalerweise noch .toUpper()
-//			//TODO: statt "editText1.setText(str);" muss man hier das aktuelle Spiel auf das ausgewählte spiel setzen
+			  SharedPreferences.Editor editor = preferences.edit();
+			  editor.putString("currentGameName",selectedCategory.getString());
+			  editor.putInt("currentGameId",selectedCategory.getId());
+			  editor.commit();
+		     
 		}
 		
 		@Override
@@ -218,16 +186,11 @@ public class SettingsGame extends Activity{
 		@Override
 		public void onItemSelected(AdapterView<?> parent,
 			View view, int pos, long id) {
-			selectedRound = (Integer) parent.getItemAtPosition(pos);	
-//
-//			//TODO: Man muss es schaffen, das hier nicht der Name des sondern die ID übergeben wird, 
-//			//sodass man mit dieser dann weiterarbeiten kann
-//			
-//			  preferences = getSharedPreferences(String.valueOf(R.string.preference_file_key), Context.MODE_PRIVATE);
-//			
-//			  SharedPreferences.Editor editor = preferences.edit();
-//			  editor.putString("currentRoundName",roundName);
-//			  editor.commit();
+			selectedRound = (Integer) parent.getItemAtPosition(pos);
+			
+			SharedPreferences.Editor editor = preferences.edit();
+			editor.putInt("currentRoundId",selectedRound);
+			editor.commit();
 			  
 		}
 		
@@ -328,22 +291,7 @@ public class SettingsGame extends Activity{
 		//Spinner Game	
 		List<DataObject> listAllGamesAndRoundsOfTheWorkshop = null;
 		
-		
-		
-		//For the spinner Headline
-//		listAllGamesAndRoundsOfTheWorkshop.add( 0, new DataObject("bitte Auswählen") );
-		
-		//Aktuelles Spiel bestimmen
-//		preferences = getSharedPreferences(String.valueOf(R.string.preference_file_key), Context.MODE_PRIVATE);
-		
-		/*
-		int currentGameId = preferences.getInt("currentGameId",0);
-		
-		int gameListPos = getGamePositionInSpinner(listAllGamesAndRoundsOfTheWorkshop, currentGameId);
-		*/
-		
-		
-		
+	
 
 		spinnerGame = (Spinner) findViewById(R.id.spinnerGame);
 		ArrayAdapter  <Category> gameAdapter = 
