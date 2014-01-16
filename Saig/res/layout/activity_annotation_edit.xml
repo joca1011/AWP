@@ -8,13 +8,15 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="@string/annotation_edit" />
 
     <EditText
         android:id="@+id/editText1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10" >
+        android:ems="10"
+        android:hint="@string/annotation_name"
+        android:inputType="text" >
 
         <requestFocus />
     </EditText>
@@ -23,42 +25,41 @@
         android:id="@+id/editText2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10" />
+        android:ems="10" 
+        android:hint="@string/annotation_description"
+        android:inputType="text"/>
 
-    <RelativeLayout
+    <GridLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:columnCount="1" >
 
         <Button
             android:id="@+id/button1"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="34dp"
-            android:text="Button" />
+            android:paddingTop="25dp"
+            android:text="@string/button_record" />
 
         <Button
             android:id="@+id/button2"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/button1"
-            android:layout_alignParentRight="true"
-            android:text="Button" />
+            android:paddingTop="25dp"
+            android:text="@string/button_save" />
 
         <Button
             android:id="@+id/button3"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/button1"
-            android:text="Button" />
-    </RelativeLayout>
+            android:paddingTop="25dp"
+            android:text="@string/button_back" />
+    </GridLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.90" >
+        android:layout_weight="0.55" >
 
         <TextView
             android:id="@+id/textView2"

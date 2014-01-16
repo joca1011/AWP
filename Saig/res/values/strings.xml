@@ -135,5 +135,12 @@
     
     <string name="make_your_annotations">Make your Annotations</string>
     <string name="annotation_list">List of all Annotations with Text and Audiofiles</string>
+    <string name="annotation_edit">Edit Annotation</string>
+    <string name="annotation_name">Annotation Name</string>
+    <string name="annotation_description">Annotation Description</string>
+    <string name="button_save">Save</string>
+    <string name="button_back">Back</string>
+    <string name="button_record">Start Recording</string>
+    
     
 </resources>
