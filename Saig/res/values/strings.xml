@@ -47,7 +47,7 @@
     
     <string name="app_name">Saig</string>
     <string name="action_settings">Settings</string>
-    <string name="login">Sign in (Cheat)</string>
+    <string name="login">Sign in</string>
     <string name="register">Sign up</string>
     <string name="login_save">Remember?</string>
     <string name="email">Email</string>
