@@ -6,9 +6,9 @@
 
     <TextView
         android:id="@+id/textView1"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Large Text"
+        android:text="@string/make_your_annotations"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <LinearLayout
@@ -27,13 +27,13 @@
 
             <Button
                 android:id="@+id/newAnnotation"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/mediadetails_new_annotation" />
 
             <Button
                 android:id="@+id/save"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
@@ -53,7 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text="List of all Annotations with Text and Audiofiles" />
+            android:text="@string/annotation_list" />
 
     </RelativeLayout>
 
