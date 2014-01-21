@@ -1,11 +1,9 @@
 package de.saig.activities;
 
-import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 import org.apache.http.client.ClientProtocolException;
@@ -25,11 +23,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import de.awp.saig.R;
 import de.saig.podio.Category;
-import de.saig.podio.DataAnnotation;
 import de.saig.podio.DataObject;
 import de.saig.podio.PodioService;
 import de.saig.podio.Workshop;
-import de.saig.util.Constants;
 
 
 public class SettingsGame extends Activity{
@@ -290,68 +286,6 @@ public class SettingsGame extends Activity{
 	}
 	
 	
-	public void changeSpinnerGame(int currentWorkshopId){
-		//Spinner Game	
-		
-		
-		
-		/*
-		
-		List<DataObject> listAllGamesAndRoundsOfTheW = null;
-		
-		if(currentWorkshopId!=0)		//Means: If a workshop is selected
-		{
-			try {
-				listAllGamesAndRoundsOfTheW = ps.getObjectsByWorkshopId(this,currentWorkshopId);
-			} catch (ClientProtocolException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		
-		//For the spinner Headline
-	
-		try {
-		listAllGamesAndRoundsOfTheW.add( 0, new DataObject("bitte Auswählen") );
-		} 
-		catch (Exception e){
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		spinnerGame = (Spinner) findViewById(R.id.spinnerGame); 
-		
-		
-		ArrayAdapter  <DataObject> gameAdapter = 
-				new ArrayAdapter  <DataObject> (this, android.R.layout.simple_spinner_item, listAllGamesAndRoundsOfTheW );
-		
-		
-		gameAdapter.notifyDataSetChanged();
-		
-		
-		
-		gameAdapter = (ArrayAdapter) spinnerGame.getAdapter();
-		gameAdapter.notifyDataSetChanged();
-		
-		
-		//spinnerGame.setAdapter(gameAdapter);
-		
-		/*
-		spinnerGame.setOnItemSelectedListener(new MyOnGameSelectedListener());
-		*/
-		
-	
-	
-	}
-
-	
-	
 	
 	
 	//Neuen Workshop erstellen
@@ -372,7 +306,6 @@ public class SettingsGame extends Activity{
 	    startActivity(intent);
 	}
 	
-
 	
 	public void backToOverview (View view) {
 		Intent intent = new Intent(this, Overview.class);
