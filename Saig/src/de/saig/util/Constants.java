@@ -11,7 +11,7 @@ public class Constants {
 	public static final String PODIO_PASSWORD 		= "podio_password";
 	public static final int WORKSHOP_APP_ID 		= 6133615;
 	
-	public static final int WORKSHOP_ID 			= 666;
+	public static final int WORKSHOP_ID 			= 666;		//Darf kein 0 sein, da Integer. stat int. 666 funktioniert, da Workshop Ids immer länger sind
 	public static final int GAME_ID 				= 0;
 	public static final int ROUND_NR 				= 0;
 	

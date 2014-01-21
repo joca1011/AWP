@@ -1,14 +1,9 @@
 package de.saig.activities;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.text.ParseException;
-import java.util.List;
 
 import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONException;
 
 import android.app.Activity;
@@ -17,18 +12,15 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import de.awp.saig.R;
 import de.saig.podio.PodioService;
 import de.saig.podio.Workshop;
-import de.saig.util.Constants;
 
 
 public class Overview extends Activity {
@@ -108,7 +100,7 @@ public class Overview extends Activity {
 		  
 		  String WorkshopDataString;
 		  
-		  if(currentWorkshopId==555){ WorkshopDataString = "kein Spiel ausgewählt";}
+		  if(currentWorkshopId==666){ WorkshopDataString = "kein Spiel ausgewählt";}
 		  else{WorkshopDataString =  	 	 "  Workshop: "+currentWorkshopName
 											+"\n  Game : "+currentGameName
 											+"\n  RoundId: "+currentRoundId;}

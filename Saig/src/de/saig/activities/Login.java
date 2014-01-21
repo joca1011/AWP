@@ -5,9 +5,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.View;
 import de.awp.saig.R;
+import de.saig.util.Constants;
 
 public class Login extends Activity{
 	
@@ -16,44 +16,28 @@ public class Login extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
 		
-		
-		  //Shared Preferences Vorbelegen
-		
+		//Shared Preferences vorbelegen
 		SharedPreferences sharedPrefs = getSharedPreferences(String.valueOf(R.string.preference_file_key), Context.MODE_PRIVATE);
-		/* SharedPreferences.Editor editor = sharedPrefs.edit();
-		
-		  SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this); */
-		  SharedPreferences.Editor editor = sharedPrefs.edit();
-		  editor.putString("thisName","Peeeeed2");
-		  editor.putInt("currentWorkshopId",555);		//Darf kein 0 sein, da Integer, stat int. 555 geht, da Workshop Ids immer länger sind
-		  editor.putInt("currentGameId",0);
-		  editor.putInt("currentRoundId",0);
-		  
-		  editor.putString("currentWorkshopName","");
-		  editor.putString("currentGameName","");
-		  editor.putString("currentRoundName","");
-		  
-		  editor.commit();
-		  //	int WorkshopId = sharedPrefs.getInt("WORKSHOP_ID",Constants.WORKSHOP_ID);
-		  //	int GameId = sharedPrefs.getInt("GameId",Constants.GAME_ID);
-		  //	int RoundNr = sharedPrefs.getInt("RoundNr",Constants.ROUND_NR);
-		
-		
-		
+		SharedPreferences.Editor editor = sharedPrefs.edit();
+		editor.putString("thisName","Peeeeed2");
+		editor.putInt("currentWorkshopId",Constants.WORKSHOP_ID);		
+		editor.putInt("currentGameId",Constants.GAME_ID);
+		editor.putInt("currentRoundId",Constants.ROUND_NR);
+		editor.putString("currentWorkshopName","");
+		editor.putString("currentGameName","");
+		editor.commit();
 	}
 	
+	//Weiterleitung zu ExternalLogins
 	public void signIn (View view) {
 		//TODO validate login
 		Intent intent = new Intent(this, ExternalLogins.class);
 	    startActivity(intent);
-	    
-		
 	}
 	
+	//Weiterleitung zu signUp
 	public void signUp (View view) {
 		Intent intent = new Intent(this, Register.class);
 	    startActivity(intent);
 	}
-	
-	
 }
