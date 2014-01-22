@@ -105,9 +105,31 @@
          <item>Spiel einstellen</item>
     </string-array>    
     
+
+    <!-- Media Overview Testdaten-->
     
+    <string-array name="spinnerWorkshop">
+         <item>Workshop 1</item>    
+         <item>Workshop 2</item>
+    </string-array> 
     
+        
+    <string-array name="spinnerGame">
+         <item>Prune the Product Tree</item>    
+         <item>Speedboat</item>
+         <item>Product Box</item>
+         <item>Me and My Shadow</item>
+    </string-array> 
     
+            
+     <string-array name="spinnerRound">
+         <item>1</item>    
+         <item>2</item>
+         <item>3</item>
+         <item>4</item>
+    </string-array> 
+    
+    <!-- Media Overview Testdaten Ende-->
      
     
     
