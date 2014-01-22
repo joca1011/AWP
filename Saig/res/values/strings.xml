@@ -108,23 +108,6 @@
     
     
     
-    <!-- TODO: folgendes soll später durch Datenbankinhalte ersetzt werden -->
-    <string-array name="spinnerWorkshop">
-         <item>Workshop 1</item>
-         <item>Workshop 2</item>
-         <item>Workshop 3</item>
-    </string-array>
-    <string-array name="spinnerGame">
-         <item>Me and my Shadow</item>
-         <item>Prune the Product tree</item>
-         <item>Speedboat</item>
-    </string-array>
-    <string-array name="spinnerRound">
-         <item>Runde 1</item>
-         <item>Runde 2</item>
-         <item>Runde 3</item>
-         <item>Runde 4</item>
-    </string-array>
      
     
     

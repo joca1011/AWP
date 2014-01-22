@@ -15,7 +15,6 @@ public class MediaDetail extends Activity{
 	}
 	
 	public void save(View view) {
-		//TODO validate login
 		Intent intent = new Intent(this, Overview.class);
 	    startActivity(intent);
 	}

@@ -1,11 +1,5 @@
 package de.saig.activities;
 
-import java.io.IOException;
-import java.text.ParseException;
-
-import org.apache.http.client.ClientProtocolException;
-import org.json.JSONException;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -19,8 +13,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import de.awp.saig.R;
-import de.saig.podio.PodioService;
-import de.saig.podio.Workshop;
 
 
 public class Overview extends Activity {
@@ -28,7 +20,6 @@ public class Overview extends Activity {
 	Spinner spinnerSettings;
 	TextView textviewHeadline;
 	SharedPreferences sharedPrefs;
-	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -41,9 +32,7 @@ public class Overview extends Activity {
 		StrictMode.ThreadPolicy.Builder().permitAll().build(); 
 		StrictMode.setThreadPolicy(policy);
 		
-		
 		textviewHeadline = (TextView) findViewById(R.id.textview_headline);
-		
 		
 		spinnerSettings = (Spinner) findViewById(R.id.spinnerSettings);
 		  ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
@@ -53,45 +42,12 @@ public class Overview extends Activity {
 		spinnerSettings.setOnItemSelectedListener(new MyOnItemSelectedListener());
 
 
-		
-		/* Podio Test Bereich */
-		PodioService ps = new PodioService();
-		
-		String a = "nö";
-		try {
-			Workshop ws = ps.getWorkshopById(this,96788031);
-			a = ws.getTitel()+" "+ws.getDatum();
-		} catch (ClientProtocolException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
 		
 		
-		/* Ende Podio Test Bereich */
-		
-		
-		
-		
-		
-		/* Shared Preferences Test*/
-		
-		// TODO: Hier WorkshopID, GameID und Rundennummer in setText ausgeben
-		// TODO: Wie geplant oben immer anzeigen welcher Workshop, Game, Round, siehe Todo oben
-		// TODO: Danach in Gamesettings einstellen, dass die shared preferances angepasst werden
-		
-	      
+		//Auslesen der Shared Preferences um oben anzuzeigen welcher Workshop gerade ausgewählt ist
 		  SharedPreferences preferences = getSharedPreferences(String.valueOf(R.string.preference_file_key), Context.MODE_PRIVATE);
 		  int currentWorkshopId = preferences.getInt("currentWorkshopId",0);
-		  int currentGameId = preferences.getInt("currentGameId",0);
 		  int currentRoundId = preferences.getInt("currentRoundId",0);
 		  
 		  String currentWorkshopName = preferences.getString("currentWorkshopName","");
@@ -103,13 +59,12 @@ public class Overview extends Activity {
 		  if(currentWorkshopId==666){ WorkshopDataString = "kein Spiel ausgewählt";}
 		  else{WorkshopDataString =  	 	 "  Workshop: "+currentWorkshopName
 											+"\n  Game : "+currentGameName
-											+"\n  RoundId: "+currentRoundId;}
+											+"\n  Round: "+currentRoundId;}
 		  
 		  textviewHeadline.setText(WorkshopDataString);
 		  
 		
 	}
-	
 	
 	public class MyOnItemSelectedListener  implements OnItemSelectedListener  {
 		
@@ -120,11 +75,6 @@ public class Overview extends Activity {
 			
 			
 			if(pos==0){
-				
-				
-				
-				
-				//textviewHeadline.setText(a);
 			}
 			else if(pos==1){
 				textviewHeadline.setText(str);
@@ -153,27 +103,23 @@ public class Overview extends Activity {
 		}
 	}
 	
-	
-	
-	
 	public void showMedia (View view) {
 		Intent intent = new Intent(this, MediaOverview.class);
 	    startActivity(intent);
 	}
-	
-	
 	
 	public void recordVoice (View view) {
 		Intent intent = new Intent(this, AudioRecording.class);
 	    startActivity(intent);
 	}
 	
+	public void newPhoto (View view) {	}
+	
 	
 	public void showLogout (View view) {
 		Intent intent = new Intent(this, Logout.class);
 	    startActivity(intent);
 	}
-	
 	
 	public void showExternalLogins (View view) {
 		Intent intent = new Intent(this, ExternalLogins.class);
@@ -184,8 +130,5 @@ public class Overview extends Activity {
 		Intent intent = new Intent(this, SettingsGame.class);
 	    startActivity(intent);
 	}
-	
-	
-
 	
 }

@@ -3,7 +3,6 @@ package de.saig.activities;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.apache.http.client.ClientProtocolException;
@@ -23,10 +22,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import de.awp.saig.R;
 import de.saig.podio.Category;
-import de.saig.podio.DataObject;
 import de.saig.podio.PodioService;
 import de.saig.podio.Workshop;
-
 
 public class SettingsGame extends Activity{
 	
@@ -41,7 +38,6 @@ public class SettingsGame extends Activity{
 	Workshop selectedWorkshop = null;
 	int selectedRound;
 	
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -49,40 +45,29 @@ public class SettingsGame extends Activity{
 		
 		textView1 = (TextView) findViewById(R.id.textView1);
 		
-		
-
-		
 		// Dieser Teil muss in jede Activity die einen Netzwerkzugriff hat
 		StrictMode.ThreadPolicy policy = new 
 		StrictMode.ThreadPolicy.Builder().permitAll().build(); 
 		StrictMode.setThreadPolicy(policy);
 		
-	
-		
 		//Aktuellen Workshop bestimmen
 		preferences = getSharedPreferences(String.valueOf(R.string.preference_file_key), Context.MODE_PRIVATE);
 
-		
 		spinnerWorkshop = (Spinner) findViewById(R.id.settings_workshop_spinner);
 		ArrayAdapter<Workshop> workshopAdapter = null;
 		try {
 			workshopAdapter = new ArrayAdapter  <Workshop> (this, android.R.layout.simple_spinner_item, ps.getWorkshops(this) );
 		} catch (ClientProtocolException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		spinnerWorkshop.setAdapter(workshopAdapter);
 		spinnerWorkshop.setOnItemSelectedListener(new MyOnWorkshopSelectedListener());
-		
 		
 		if (preferences.getInt("currentWorkshopId",-1) != -1) {
 			for (int i = 0; i < workshopAdapter.getCount(); i++) {
@@ -95,31 +80,23 @@ public class SettingsGame extends Activity{
 
 	}
 	
-	
-
 	public class MyOnWorkshopSelectedListener implements OnItemSelectedListener {
 		@Override
 		public void onItemSelected(AdapterView<?> parent,
 			View view, int pos, long id) {
 			
-			
 			selectedWorkshop = (Workshop) parent.getItemAtPosition(pos);
 			setSpinnerGame(selectedWorkshop.getInnovationGames());
 			setSpinnerRounds(selectedWorkshop.getAnzahlRunden());
 			
-			
-			
-			  int workshopId = selectedWorkshop.getId();
 			  preferences = getSharedPreferences(String.valueOf(R.string.preference_file_key), Context.MODE_PRIVATE);
-
 
 			  SharedPreferences.Editor editor = preferences.edit();
 			  editor.putString("currentWorkshopName",selectedWorkshop.getTitel());
 			  editor.putInt("currentWorkshopId",selectedWorkshop.getId());
 			  
 			  editor.commit();
-			  
-			  
+			   
 		}
 		
 		@Override
@@ -127,8 +104,6 @@ public class SettingsGame extends Activity{
 			//Tue nichts
 		}
 	}
-	
-
 	
 	public void setSpinnerRounds(int rounds) {
 		List<Integer> listRounds = new ArrayList<Integer>();
@@ -141,7 +116,6 @@ public class SettingsGame extends Activity{
 		spinnerRound.setAdapter(roundAdapter);
 		spinnerRound.setOnItemSelectedListener(new MyOnRoundSelectedListener());
 	}
-	
 	
 	public class MyOnGameSelectedListener implements OnItemSelectedListener {
 		
@@ -162,10 +136,6 @@ public class SettingsGame extends Activity{
 		}
 	}
 	
-	
-	
-	
-	
 	public class MyOnRoundSelectedListener implements OnItemSelectedListener {
 		@Override
 		public void onItemSelected(AdapterView<?> parent,
@@ -184,109 +154,13 @@ public class SettingsGame extends Activity{
 		}
 	}	
 	
-	
-	
-	public int  getGamePositionInSpinner(List<DataObject> listGames,int currentGameId){
-		int idx = 0;
-		int pos = 0;
-		for (DataObject w : listGames) {
-		    if(w.getId()==currentGameId){pos=idx; break;}
-		    idx++;
-		}
-		return pos;
-	}
-	
-	
-	
-	public int  getWorkshopPositionInSpinner(List<Workshop> listAllWorkshops,int currentWorkshopId){
-		int idx = 0;
-		int pos = 0;
-		for (Workshop w : listAllWorkshops) {
-		    if(w.getId()==currentWorkshopId){pos=idx; break;}
-		    idx++;
-		}
-		return pos;
-	}
-	
-	
-	
-	
-	
-	public void setSpinnerGame(){
-		List<Workshop> listAllWorkshops = null;
-		try {
-			listAllWorkshops = ps.getWorkshops(this);
-		} catch (ClientProtocolException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		//listAllWorkshops.add( 0, new Workshop(0, "bitte Workshop auswählen",new Date(),new ArrayList<Category>(), 0) );
-		
-		
-		int currentWorkshopId = preferences.getInt("currentWorkshopId",0);
-		Workshop selectedWorkshop = null;
-		if (currentWorkshopId != 0) {
-		try {
-			selectedWorkshop = ps.getWorkshopById(this, currentWorkshopId);
-		} catch (ClientProtocolException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		}
-		else {
-			selectedWorkshop = listAllWorkshops.get(0);
-		}
-		
-		List<Category> games = new ArrayList<Category>(Arrays.asList(Category.values()));
-		ArrayAdapter  <Category> gameAdapter = 
-				new ArrayAdapter  <Category> (this, android.R.layout.simple_spinner_item, selectedWorkshop.getInnovationGames());
-		spinnerGame = (Spinner) findViewById(R.id.spinnerGame);
-		spinnerGame.setAdapter(gameAdapter);
-		/*
-		spinnerGame.setOnItemSelectedListener(new MyOnGameSelectedListener());
-		*/
-		//spinnerGame.setSelection(gameListPos);
-	}
-	
-	
-	
-	
-	
 	public void setSpinnerGame(List<Category> games){
-		//Spinner Game	
-		List<DataObject> listAllGamesAndRoundsOfTheWorkshop = null;
-		
-	
-
 		spinnerGame = (Spinner) findViewById(R.id.spinnerGame);
 		ArrayAdapter  <Category> gameAdapter = 
 				new ArrayAdapter  <Category> (this, android.R.layout.simple_spinner_item, games );
 		spinnerGame.setAdapter(gameAdapter);
 		spinnerGame.setOnItemSelectedListener(new MyOnGameSelectedListener());
-		//spinnerGame.setSelection(gameListPos);
 	}
-	
-	
-	
 	
 	//Neuen Workshop erstellen
 	public void newWorkshop (View view) {
@@ -306,22 +180,16 @@ public class SettingsGame extends Activity{
 	    startActivity(intent);
 	}
 	
-	
+	//Zurück zur Übersicht ohne zu speichern
 	public void backToOverview (View view) {
 		Intent intent = new Intent(this, Overview.class);
 	    startActivity(intent);
 	}
 	
-	
+	//Zurück zur Übersicht	
 	public void saveSettingsGame (View view) {
 		//TODO Funktionalität, dass hier dann auch gespeichert wird fehlt noch
 		Intent intent = new Intent(this, Overview.class);
-	    startActivity(intent);
-	}
-	
-	public void reload(View view) {
-		//TODO Funktionalität, dass hier dann auch gespeichert wird fehlt noch
-		Intent intent = new Intent(this, SettingsGame.class);
 	    startActivity(intent);
 	}
 	
